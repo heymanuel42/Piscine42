@@ -85,29 +85,47 @@ int main(void)
 		x2++;
 	}
 
+	int tab33[2] = {1,2};
+	ft_rev_int_tab(tab33,2);
+	 x2 = 0;
+	printf("\ndouble\n");
+	while(x2 < 2){
+		printf("%d",tab33[x2]);
+		x2++;
+	}
+
+	int tab32[1] = {2};
+	ft_rev_int_tab(tab32,1);
+	 x2 = 0;
+	printf("\nsingle\n");
+	while(x2 < 1){
+		printf("%d",tab32[x2]);
+		x2++;
+	}
+
 	int tabl[100];
 	for(int i = 0; i < 100; i++){
 		tabl[i] = i;
 	}
 	printf("\nlong\n");
-	ft_rev_int_tab(tabl,100);	
+	ft_rev_int_tab(tabl,100);
 	for(int i = 0; i < 100; i++){
 		printf("%d ",tabl[i]);
 	}
 	print_ex(8);
 
-	int tab3 [5] = {1,5,2,7,0};
-	ft_sort_int_tab(tab3,5);	
+	int tab3 [5] = {100,78,99,20,34};
+	ft_sort_int_tab(tab3,5);
 	for(int i = 0; i < 5; i++){
 		printf("%d ",tab3[i]);
 	}
-	int randAr[40];
-	for(int i = 0; i < 40; i++){
+	int randAr[20];
+	for(int i = 0; i < 20; i++){
 		randAr[i] = rand()%100;
 	}
 	printf("random\n");
-	ft_sort_int_tab(randAr,40);	
-	for(int i = 0; i < 40; i++){
+	ft_sort_int_tab(randAr,20);
+	for(int i = 0; i < 20; i++){
 		printf("%d ",randAr[i]);
 	}
 	return 0;

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:31:33 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/01 15:12:19 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 23:16:24 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+
+void	ft_swap_3(int *a, int *b)
+{
+	int		tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 int	is_sorted(int *tab, int size)
 {
@@ -21,8 +30,8 @@ int	is_sorted(int *tab, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (i + 1 < size)
-			sorted = tab[i] < tab[i + 1];
+		if( tab[i] > tab[i + 1])
+			return (0);
 		i++;
 	}
 	return (sorted);
@@ -32,10 +41,8 @@ int	get_unsorted_smallest(int *tab, int *smallest_index, int offset, int size)
 {
 	int	i;
 	int	smallest;
-	int	index;
 
 	smallest = __INT_MAX__;
-	index = 0;
 	i = offset;
 	while (i < size)
 	{
@@ -52,22 +59,15 @@ int	get_unsorted_smallest(int *tab, int *smallest_index, int offset, int size)
 void	ft_sort_int_tab(int *tab, int size)
 {
 	int	offset;
-	int	a;
-	int	b;
-	int	smallest;
 	int	smallest_index;
 
-	a = tab[0];
-	smallest = __INT_MAX__;
 	smallest_index = 0;
-	b = __INT_MAX__;
 	offset = 0;
 	while (!is_sorted(tab, size))
 	{
-		a = tab[offset];
-		smallest = get_unsorted_smallest(tab, &smallest_index, offset, size);
-		tab[offset] = smallest;
-		tab[smallest_index] = a;
+		get_unsorted_smallest(tab, &smallest_index, offset, size);
+		ft_swap_3(&tab[offset], &tab[smallest_index]);
 		offset++;
 	}
 }
+

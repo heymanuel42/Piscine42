@@ -3,60 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:14:52 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/08/31 17:13:07 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:36:51 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-int	num_length(int nb)
+void	ft_putnbr_rec(int nb)
 {
-	int	nb_count;
+	char c;
 
-	nb_count = 0;
-	while (nb / 10)
+	if (nb >= 10 )
 	{
-		nb_count++;
-		nb = nb / 10;
+		ft_putnbr_rec(nb/10);
+		ft_putnbr_rec(nb%10);
 	}
-	return (nb_count);
-}
-
-int	m_pow(int X, int Y)
-{
-	int	power;
-	int	i;
-
-	power = 1;
-	i = 1;
-	while (i <= Y)
+	else
 	{
-		power = power * X;
-		i++;
+		c = '0' + nb;
+		write(1,&c,1);
 	}
-	return (power);
 }
-
 void	ft_putnbr(int nb)
 {
-	int		nb_count;
-	int		mod;
-	int		r ;
-	char	c;
-
-	nb_count = num_length(nb);
-	mod = m_pow(10, nb_count);
-	r = nb;
-	while (nb)
+	if (nb < 0)
 	{
-		c = '0' + r / mod;
-		r = r % mod;
-		write(1, &c, 1);
-		mod /= 10;
-		nb /= 10 ;
+		write(1, "-", 1);
+		ft_putnbr_rec(nb * -1);
 	}
-	write(1, "\n", 1);
+	else
+		ft_putnbr_rec(nb);
 }

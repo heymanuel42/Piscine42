@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:38:41 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/01 11:14:25 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:15:47 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	print_comb(char *c1, char *c2)
 				&& c2[0] == '9'
 				&& c2[1] == '9'))
 			write(1, ", ", 2);
-		else
-			write(1, "\n", 1);
 	}
 }
 

@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:46:34 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/01 14:33:19 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 23:01:45 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_swap_2(int *a, int *b)
+{
+	int		tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 void	ft_rev_int_tab(int *tab, int size)
 {
 	int	i;
-	int	r_i;
-	int	a;
-	int	b;
+	int r_i;
 
-	a = tab[0];
-	b = tab[size - 1];
 	i = 0;
 	r_i = size - 1;
-	while (i < size)
+	while (i <= size /  2)
 	{
-		tab[i] = b;
-		tab[r_i] = a;
+		ft_swap_2(&tab[i], &tab[r_i]);
 		i++;
 		r_i--;
-		a = tab[i];
-		b = tab[r_i];
-		if (i >= size / 2)
-			break ;
 	}
 }

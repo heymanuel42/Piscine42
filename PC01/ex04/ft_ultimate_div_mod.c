@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:33:51 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/01 12:36:46 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:55:26 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_ultimate_div_mod(int *a, int *b)
 {
-	int		tmp;
+	int	tmp;
 
 	tmp = *a / *b;
 	*b = *a % *b;
