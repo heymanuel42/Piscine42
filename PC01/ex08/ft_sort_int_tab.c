@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:31:33 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/06 23:16:24 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 23:53:06 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ void	ft_swap_3(int *a, int *b)
 
 int	is_sorted(int *tab, int size)
 {
-	int	sorted;
 	int	i;
 
-	sorted = -1;
 	i = 0;
 	while (i < size)
 	{
@@ -34,10 +32,10 @@ int	is_sorted(int *tab, int size)
 			return (0);
 		i++;
 	}
-	return (sorted);
+	return (1);
 }
 
-int	get_unsorted_smallest(int *tab, int *smallest_index, int offset, int size)
+void	get_unsorted_smallest(int *tab, int *smallest_index, int offset, int size)
 {
 	int	i;
 	int	smallest;
@@ -53,7 +51,6 @@ int	get_unsorted_smallest(int *tab, int *smallest_index, int offset, int size)
 		}
 		i++;
 	}
-	return (smallest);
 }
 
 void	ft_sort_int_tab(int *tab, int size)
