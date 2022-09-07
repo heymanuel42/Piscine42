@@ -6,12 +6,14 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:26:08 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/05 15:27:20 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 09:41:31 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 void	ft_putstr(char *str)
 {
-	while(*str)
-		write(1,&(*str++),1);
+	while (*str)
+		write(1, &(*str++), 1);
 }

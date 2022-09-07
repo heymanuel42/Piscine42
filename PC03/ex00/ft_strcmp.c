@@ -6,18 +6,18 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:17:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/05 12:41:13 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 12:19:35 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 int	ft_strcmp(char *s1, char *s2)
-{	
-	while (*s1 != '\0' && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

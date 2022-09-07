@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:14:52 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/06 22:36:51 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 09:30:49 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_putnbr_rec(int nb)
 {
-	char c;
+	char	c;
 
-	if (nb >= 10 )
+	if (nb >= 10)
 	{
-		ft_putnbr_rec(nb/10);
-		ft_putnbr_rec(nb%10);
+		ft_putnbr_rec(nb / 10);
+		ft_putnbr_rec(nb % 10);
 	}
 	else
 	{
 		c = '0' + nb;
-		write(1,&c,1);
+		write(1, &c, 1);
 	}
 }
+
 void	ft_putnbr(int nb)
 {
 	if (nb < 0)

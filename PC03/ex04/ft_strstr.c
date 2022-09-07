@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:12:18 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/05 15:12:12 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:04:24 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,31 @@ int	ft_strlen_4(char *s)
 
 int	ft_strncmp_4(char *s1, char *s2, unsigned int n)
 {
-	while (n - 1
-		&& *s1
-		&& (*s1 == *s2))
+	while (n - 1 > 0 && *s1 != '\0' && *s1 == *s2)
 	{
 		s1++;
 		s2++;
-		--n;
+		n--;
 	}
 	return (*s1 - *s2);
 }
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	int		sub_str_len;
+	int	sub_str_len;
+	int	i;
 
+	i = 0;
 	sub_str_len = ft_strlen_4(to_find);
-	while (*str)
+	if (sub_str_len <= 0)
+		return (str);
+	while (str[i] != '\0')
 	{
-		if (!ft_strncmp_4(str, to_find, sub_str_len))
+		if (!ft_strncmp_4(str + i, to_find, sub_str_len))
 		{
-			return (str);
+			return (str + i);
 		}
-		str++;
+		i++;
 	}
 	return (NULL);
 }

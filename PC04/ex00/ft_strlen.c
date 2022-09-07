@@ -6,16 +6,16 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:24:21 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/05 15:25:49 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 09:35:00 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
 	char	*start;
-	
+
 	start = str;
-	while(*str++)
+	while (*str++)
 		;
 	return (str - start);
 }
