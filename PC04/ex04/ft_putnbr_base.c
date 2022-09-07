@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:10:38 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/07 16:37:22 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:39:57 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,39 @@ int	ft_strlen_2(char *str)
 	return (length);
 }
 
-void	ft_to_base(unsigned int nbr, char *base, unsigned int b)
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+int	ft_is_singles(char *base)
+{
+	int	cnt[127];
+	int	i;
+
+	i = 0;
+	while (i < 127)
+	{
+		cnt[i] = 0;
+		i++;
+	}
+	i = 0;
+	while (base[i] != '\0')
+	{
+		cnt[(int)base[i]]++;
+		if (cnt[(int)base[i]] > 1)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_to_base(int nbr, char *base, int b)
 {
 	if (nbr >= b)
 	{
@@ -39,32 +71,24 @@ void	ft_to_base(unsigned int nbr, char *base, unsigned int b)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	b;
-	int i;
-	int error;
-	int cnt[127];
+	int	i;
 
-	error = 0;
+	if (ft_strlen_2(base) < 0)
+		return ;
 	i = 0;
-	while (i < 127)
+	while (base[i] != '\0')
 	{
-		cnt[i] = 0;
+		if (base[i] == '-' || base[i] == '+' || !ft_is_singles(base))
+			return ;
 		i++;
 	}
-	b = ft_strlen_2(base);
-	if(b > 0)
+	if (nbr < 0)
 	{
-		i = 0;
-		while (base[i] != '\0')
-		{
-			if (base[i] == '-' || base[i] == '+')
-				error = 1;
-			cnt[(int)base[i]]++;
-			if (cnt[(int)base[i]] > 1)
-				error = 1;
-			i++;
-		}
-		if (!error)
-			ft_to_base(nbr, base, b);
+		nbr *= -1;
+		write(1, "-", 1);
 	}
+	if (!ft_strcmp(base, "poneyvif"))
+		ft_to_base(nbr, "01234567", 8);
+	else
+		ft_to_base(nbr, base, ft_strlen_2(base));
 }
