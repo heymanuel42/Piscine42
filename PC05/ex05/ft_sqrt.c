@@ -6,11 +6,12 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/07 19:50:40 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 22:12:52 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+
 int	ft_pow(int nb, int power)
 {
 	if (power < 0)
@@ -21,21 +22,28 @@ int	ft_pow(int nb, int power)
 		return (nb * ft_pow(nb, power - 1));
 }
 
+//binary search
 int	ft_sqrt(int nb)
 {
-	int n;
-	int back;
+	int	high;
+	int	low;
+	int	mid;
 
-	back = nb;
-	n = 0;
-	while(nb > 0)
+	if (nb == 0 || nb == 1)
+		return (nb);
+	if (nb < 0)
+		return (0);
+	high = nb;
+	low = 0;
+	while (low <= high)
 	{
-		n++;
-		nb /= 2;
+		mid = (high + low) / 2;
+		if (mid * mid == nb)
+			return (mid);
+		else if (mid * mid < nb)
+			low = mid + 1;
+		else
+			high = mid - 1;
 	}
-	printf("%d n=%d %d\n",back,n,ft_pow(n,2));
-	if(ft_pow(n,2) == back)
-		return n;
-	else
-		return 0;
+	return (0);
 }

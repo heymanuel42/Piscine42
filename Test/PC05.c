@@ -6,6 +6,8 @@ int ft_iterative_power(int nb, int power);
 int ft_recursive_power(int nb, int power);
 int ft_fibonacci(int index);
 int ft_sqrt(int index);
+int ft_is_prime(int index);
+int ft_find_next_prime(int index);
 
 int main()
 {
@@ -32,6 +34,19 @@ int main()
 	for(int i = 0; i < 100; i++)
 	{
 		printf("sqrt(%d) = %d\n",i,ft_sqrt(i));
+	}
+
+	printf("%d\n",ft_recursive_power(1,1));
+	printf("\nprime\n");
+	for(int i = -10; i < 100; i++)
+	{
+		printf("is_prime(%d) = %d\n",i,ft_is_prime(i));
+	}
+
+	printf("\nnext prime\n");
+	for(int i = -10; i < 100; i++)
+	{
+		printf("next_prime(%d) = %d\n",i,ft_find_next_prime(i));
 	}
 	return 0;
 }

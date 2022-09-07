@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:10:38 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/07 18:39:57 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:16:38 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ void	ft_putnbr_base(int nbr, char *base)
 	i = 0;
 	while (base[i] != '\0')
 	{
-		if (base[i] == '-' || base[i] == '+' || !ft_is_singles(base))
+		if (base[i] == ' ' && base[i] == '-'
+			|| base[i] == '+'
+			|| !ft_is_singles(base))
 			return ;
 		i++;
 	}
