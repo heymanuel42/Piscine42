@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 22:20:07 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/04 15:22:08 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/07 15:28:49 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/07 15:31:35 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_uppercase(char *str)
+int	ft_iterative_power(int nb, int power)
 {
-	while (*str >= 'A' && *str <= 'Z')
-	{
-		str++;
-	}
-	if (*str == '\0')
+	int	res;
+
+	if (power == 0)
 		return (1);
-	else
-		return (0);
+	res = nb;
+	while (power - 1 > 0)
+	{
+		res *= nb;
+		power--;
+	}
+	return (res);
 }

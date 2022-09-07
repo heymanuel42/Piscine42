@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:10:38 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/06 16:47:12 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:37:22 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strlen_2(char *str)
 {
-	int	i;
+	int	length;
 
-	i = 0;
-	while (s1[i] != '\0' && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
+	length = 0;
+	while (str[length] != '\0')
+		length++;
+	return (length);
 }
 
-void	ft_tobin(unsigned int nbr, char *base)
+void	ft_to_base(unsigned int nbr, char *base, unsigned int b)
 {
-	if (nbr >= 2)
+	if (nbr >= b)
 	{
-		ft_tobin(nbr / 2, base);
-		ft_tobin(nbr % 2, base);
-	}
-	else
-	{
-		write(1, &base[nbr], 1);
-	}
-}
-
-void	ft_tooct(int nbr, char *base)
-{
-	if (nbr >= 8)
-	{
-		ft_tooct(nbr / 8, base);
-		ft_tooct(nbr % 8, base);
-	}
-	else
-	{
-		write(1, &base[nbr], 1);
-	}	
-}
-
-void	ft_tohex(int nbr, char *base)
-{
-	if (nbr >= 16)
-	{
-		ft_tohex(nbr / 16, base);
-		ft_tohex(nbr % 16, base);
+		ft_to_base(nbr / b, base, b);
+		ft_to_base(nbr % b, base, b);
 	}
 	else
 	{
@@ -65,16 +39,32 @@ void	ft_tohex(int nbr, char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	if (!ft_strcmp(base, "0123456789ABCDEF"))
+	int	b;
+	int i;
+	int error;
+	int cnt[127];
+
+	error = 0;
+	i = 0;
+	while (i < 127)
 	{
-		ft_tohex(nbr, base);
+		cnt[i] = 0;
+		i++;
 	}
-	else if (!ft_strcmp(base, "01"))
+	b = ft_strlen_2(base);
+	if(b > 0)
 	{
-		ft_tobin(nbr, base);
-	}
-	else if (!ft_strcmp(base, "poneyvif"))
-	{
-		ft_tooct(nbr, "01234567");
+		i = 0;
+		while (base[i] != '\0')
+		{
+			if (base[i] == '-' || base[i] == '+')
+				error = 1;
+			cnt[(int)base[i]]++;
+			if (cnt[(int)base[i]] > 1)
+				error = 1;
+			i++;
+		}
+		if (!error)
+			ft_to_base(nbr, base, b);
 	}
 }
