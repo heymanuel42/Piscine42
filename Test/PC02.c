@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 	}else if (!strcmp(ex,"06"))
 	{
 		print_ex(6);
-		
+
 		printf("HELLo&^*(&^_)\\'` is printable? : %d\n", ft_str_is_printable("HELLo&^*(&^_)\\'`"));
 		printf("? is printable? : %d\n", ft_str_is_printable("?"));
 	}else if(!strcmp(ex,"07"))
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 		printf("- %s\n",s51);
 		printf("+ %s\n",ft_strcapitalize(s51));
 		printf("- %s\n",s52);
-		printf("+ %s\n",ft_strcapitalize(s52));	
+		printf("+ %s\n",ft_strcapitalize(s52));
 		printf("- %s\n",s53);
 		printf("+ %s\n",ft_strcapitalize(s53));
 		printf("- %s\n",s54);
@@ -129,7 +129,7 @@ int main(int argc, char **argv)
 	else if(!strcmp(ex,"11"))
 	{
 		print_ex(11);
-		char s8[512] = "Coucou, \n  tu vas bien ?  Â ~ \n";
+		char s8[512] = "Coucou, \n  tu vas bien ?   ~ \n";
 		ft_putstr_with_non_printable(s8);
 		printf("\n");
 	}

@@ -12,7 +12,6 @@ void ft_sort_int_tab(int *tab, int size);
 
 int main(void)
 {
-
 	print_ex(0);
 	int t1;
 

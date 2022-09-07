@@ -10,17 +10,19 @@ void	ft_print_comb(void);
 void	ft_print_comb2(void);
 void	ft_putnbr(int nb);
 
-void nl(){
+void	nl()
+{
 	ft_putchar('\n');
 }
-void sep(int i){
+
+void	sep(int i)
+{
 	printf("ex 0%d ----------------------------------\n",i);
 }
-int main(void){
 
-	//1
-
-	/*sep(0);
+int 	main(void)
+{
+	sep(0);
 	for(int i = 0; i < 10; i++){
 		ft_putchar('0'+i);
 	}
@@ -42,7 +44,7 @@ int main(void){
 	sep(5);
 	ft_print_comb();
 	ft_print_comb2();
-	nl();*/
+	nl();
 	for(int i = 0; i < 100; i++){
 		ft_putnbr(i);
 		ft_putchar(' ');
@@ -53,5 +55,5 @@ int main(void){
 		ft_putchar(' ');
 	}
 	nl();
-	return 0;
+	return (0);
 }

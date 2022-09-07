@@ -34,10 +34,50 @@ int main()
 
 	print_ex(1);
 	printf("strncmp\n");
+	   char str1[] = "salut";
+    char str2[] = "salut";
+    char str3[] = "salut";
+    char str4[] = "salut";
+    char str5[] = "";
+    char str6[] = "salut";
+    char str7[] = "";
+    char str8[] = "";
+    char str9[] = "sa79";
+    char str10[] = "saab";
+    char str11[] = "sagnr";
+    char str12[] = "ggdhn";
+    char str13[] = "sagnr";
+    char str14[] = "ggdhn";
+
+    printf("%d\n", ft_strncmp(str1, str2, 2));
+    printf("%d\n", strncmp(str1, str2, 2));
+    printf("%s\n", "--------------------");
+    printf("%d\n", ft_strncmp(str3, str4, 5));
+    printf("%d\n", strncmp(str3, str4, 2));
+    printf("%s\n", "--------------------");
+    printf("%d\n", ft_strncmp(str5, str6, 2));
+    printf("%d\n", strncmp(str5, str6, 2));
+    printf("%s\n", "--------------------");
+    printf("%d\n", ft_strncmp(str7, str8, 20));
+    printf("%d\n", strncmp(str7, str8, 20));
+    printf("%s\n", "--------------------");
+    printf("%d\n", ft_strncmp(str9, str10, 2));
+    printf("%d\n", strncmp(str9, str10, 2));
+    printf("%s\n", "--------------------");
+    printf("%d\n", ft_strncmp(str11, str12, 5));
+    printf("%d\n", strncmp(str11, str12, 5));
+    printf("%s\n", "--------------------");
+    printf("%d\n", ft_strncmp(str13, str14, 0));
+    printf("%d\n", strncmp(str13, str14, 0));
+    printf("%s\n", "--------------------");
+	
 	printf("%d == %d\n",strncmp("hel","Hello",10),ft_strncmp("hel","Hello",10));
 	printf("%d == %d\n",strncmp("Hello","Hello",3),ft_strncmp("Hello","Hello",3));
 	printf("%d == %d\n",strncmp("banana","Hell",4),ft_strncmp("banana","Hell",4));
 	printf("%d == %d\n",strncmp("HEllo","Hello",1),ft_strncmp("HEllo","Hello",1));
+	printf("%d == %d\n",strncmp("","Hello",1),ft_strncmp("","Hello",1));
+	printf("%d == %d\n",strncmp("HEllo","",1),ft_strncmp("HEllo","",1));
+
 	printf("%d == %d\n",strncmp("","",1),ft_strncmp("","",1));
 	printf("%d == %d\n",strncmp("'\\)0@#'","'\\)0'",2),ft_strncmp("'\\)0@#'","'\\)0'",2));
 	printf("%d == %d\n",strncmp("'\\)0@#'","'\\)0'",10),ft_strncmp("'\\)0@#'","'\\)0'",10));
