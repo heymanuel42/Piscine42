@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:10:38 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/08 09:39:46 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:40:54 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_is_singles(char *base)
 	return (1);
 }
 
-void	ft_to_base(int nbr, char *base, int b)
+void	ft_to_base(long nbr, char *base, int b)
 {
 	if (nbr >= b)
 	{
@@ -71,11 +71,13 @@ void	ft_to_base(int nbr, char *base, int b)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	i;
+	int		i;
+	long	l;
 
-	if (ft_strlen_2(base) < 0)
+	if (ft_strlen_2(base) <= 0)
 		return ;
 	i = 0;
+	l = nbr;
 	while (base[i] != '\0')
 	{
 		if (base[i] == ' '
@@ -85,13 +87,13 @@ void	ft_putnbr_base(int nbr, char *base)
 			return ;
 		i++;
 	}
-	if (nbr < 0)
+	if (l < 0)
 	{
-		nbr *= -1;
+		l *= -1;
 		write(1, "-", 1);
 	}
 	if (!ft_strcmp(base, "poneyvif"))
-		ft_to_base(nbr, "01234567", 8);
+		ft_to_base(l, "01234567", 8);
 	else
-		ft_to_base(nbr, base, ft_strlen_2(base));
+		ft_to_base(l, base, ft_strlen_2(base));
 }

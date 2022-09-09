@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:31:02 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/06 12:56:13 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:56:13 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,15 @@ int	ft_check_char(char c)
 	return (-1);
 }
 
-char	*ft_remove_spaces(char *str)
+char	*ft_remove_whitespace(char *str)
 {
-	while (ft_check_char(*str) == 0)
-		str++;
+	while (*str == '\t'
+		|| *str == '\n'
+		|| *str == '\v'
+		|| *str == '\f'
+		|| *str == '\r'
+		|| *str == ' ')
+			str++;
 	return (str);
 }
 
@@ -82,7 +87,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	res = 0;
 	idx = 0;
-	str = ft_remove_spaces(str);
+	str = ft_remove_whitespace(str);
 	str = ft_get_sign(str, &sign);
 	while (str[idx] && ft_check_char(str[idx]) == 3)
 		idx++;

@@ -12,7 +12,7 @@ int ft_find_next_prime(int index);
 int main()
 {
 	printf("\nfactorial \n");
-	for(int i = 0; i < 10; i++)
+	for(int i = -5; i < 10; i++)
 	{
 		printf("iter(%d! = %d) && rec(%d! = %d)\n",i,ft_iterative_factorial(i),i,ft_recursive_factorial(i));
 	}
@@ -35,6 +35,7 @@ int main()
 	{
 		printf("sqrt(%d) = %d\n",i,ft_sqrt(i));
 	}
+	printf("sqrt(%d) = %d\n",__INT_MAX__,ft_sqrt(__INT_MAX__));
 
 	printf("%d\n",ft_recursive_power(1,1));
 	printf("\nprime\n");
@@ -48,5 +49,7 @@ int main()
 	{
 		printf("next_prime(%d) = %d\n",i,ft_find_next_prime(i));
 	}
+	printf("next_prime(%d) = %d\n",__INT_MAX__,ft_find_next_prime(__INT_MAX__));
+
 	return 0;
 }

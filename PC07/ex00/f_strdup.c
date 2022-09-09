@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*   f_strdup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 22:07:34 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/09 14:30:10 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/08 14:11:39 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/08 16:09:01 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime_2(int nb)
-{
-	int	n;
+#include <stdlib.h>
+#include <stdio.h>
 
-	n = 2;
-	if (nb == 0 || nb == 1 || nb < 0)
-		return (0);
-	while (n < nb)
-	{
-		if ((nb % n) == 0 && n != nb)
-			return (0);
-		n++;
-	}
-	return (1);
+int	ft_strlen(char *s1)
+{
+	int	length;
+
+	length = 0;
+	while (s1[length] != '\0')
+		length++;
+	return (length);
 }
 
-int	ft_find_next_prime(int nb)
+char	*ft_strdup(char *src)
 {
-	long	n;
+	char	*cpy;
+	char	*start;
 
-	n = nb;
-	while (!(ft_is_prime_2(n)))
-		n++;
-	return (n);
+	cpy = malloc(ft_strlen(src) * sizeof(char *));
+	start = cpy;
+	while (*src)
+	{
+		*cpy = *src;
+		src++;
+		cpy++;
+	}
+	cpy = start;
+	return (cpy);
 }

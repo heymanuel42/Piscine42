@@ -1,0 +1,2 @@
+find eval-manu-c00 -name '*.c' -exec cp "{}" . \;
+gcc -Wall -Werror -Wextra *.c
