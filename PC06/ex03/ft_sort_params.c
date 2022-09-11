@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 22:30:41 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/08 13:56:34 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:53:23 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,11 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		ft_putstr(argv[i]);
-		ft_putstr("\n");
+		if (argv[i][0] != '\0')
+		{
+			ft_putstr(argv[i]);
+			ft_putstr("\n");
+		}
 		i++;
 	}
 	return (0);

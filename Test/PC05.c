@@ -49,7 +49,12 @@ int main()
 	{
 		printf("next_prime(%d) = %d\n",i,ft_find_next_prime(i));
 	}
-	printf("next_prime(%d) = %d\n",__INT_MAX__,ft_find_next_prime(__INT_MAX__));
+	printf("next_prime(%d) = %d\n",2147483643,ft_find_next_prime(2147483643));
+	printf("next_prime(%d) = %d\n",2147483644,ft_find_next_prime(2147483644));
+	printf("next_prime(%d) = %d\n",2147483645,ft_find_next_prime(2147483645));
+	printf("next_prime(%d) = %d\n",2147483646,ft_find_next_prime(2147483646));
 
+
+	printf("%d %d\n",(int)9742051863,ft_find_next_prime((int)9742051863));
 	return 0;
 }

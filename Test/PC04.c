@@ -57,6 +57,8 @@ int main()
 	printf("ft_atoi(\"    --+--+123\\r4dd\" )                 = %d\n",ft_atoi("    --+--+0123\r4dd"));
 	printf("ft_atoi(\"    --+--+12\\n34dd\" )                 = %d\n",ft_atoi("    --+--+12\n34dd"));
 	printf("ft_atoi(\"\\f \\t \\r   \\n--+--+1234dd\" )                 = %d\n",ft_atoi(" \f \t \r   \n--+--+01234dd"));
+	printf("ft_atoi(\"\\f \\t \\r   \\n--+\t--+1234dd\" )                 = %d\n",ft_atoi(" \f \t \r   \n--+\t--+01234dd"));
+
 	print_ex(4);
 	for(int i =-100; i < 100; i += 4)
 	{
