@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:52:39 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/09 22:32:19 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:38:10 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+
 #define SIZE 4
+
 int	check_row_col(int *board, int x, int y, int size)
 {
 	int	i;
@@ -64,7 +66,6 @@ int	check_diagonal(int *board, int x, int y, int size)
 
 int	place(int *board, int x, int y, int current)
 {
-
 	if (!check_diagonal(board, x, y, SIZE)
 		|| !check_row_col(board, x, y, SIZE))
 	{
@@ -74,46 +75,16 @@ int	place(int *board, int x, int y, int current)
 	{
 		return (0);
 	}
-	else if(current < SIZE)
+	else if (current < SIZE)
 	{
 		board[x * SIZE + y] = 60;
 		place(board, x +1, y, current);
 		place(board, x, y + 1, current++);
 	}
+	return (0);
 }
 
 int	ft_ten_queens_puzzle(void)
 {
-	int	board[SIZE * SIZE];
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < SIZE)
-	{
-		while (j < SIZE)
-		{
-			board[i * SIZE + j] = 0;
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (i < SIZE)
-	{
-		while (j < SIZE)
-		{
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	main(void)
-{
-	ft_ten_queens_puzzle();
 	return (0);
 }
