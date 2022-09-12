@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:02:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 00:46:26 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:00:06 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	base_is_valid(char *base)
 	int	i;
 
 	i = 0;
+	if (ft_strlen(base) == 1)
+		return 0;
 	while (base[i] != '\0')
 	{
 		if (base[i] == ' '

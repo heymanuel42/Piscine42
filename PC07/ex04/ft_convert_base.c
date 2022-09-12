@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 18:31:54 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:59:04 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,18 @@ int	ft_atoi_base(char *nbr, char *base, int acc, int *sign)
 
 	base_len = ft_strlen(base);
 	power = 0;
-	if (*nbr == '\t' || *nbr == '\n' || *nbr == '\v'
-		|| *nbr == '\f' || *nbr == '\r' || *nbr == ' ')
-		ft_atoi_base(++nbr, base, acc, sign);
-	else if (*nbr == '+' || *nbr == '-')
+	while ((*nbr == '\t' || *nbr == '\n' || *nbr == '\v'
+			|| *nbr == '\f' || *nbr == '\r' || *nbr == ' '))
+	{
+		nbr++;
+	}
+	while (*nbr == '+' || *nbr == '-')
 	{
 		if (*nbr == '-')
 			*sign *= -1;
-		ft_atoi_base(++nbr, base, acc, sign);
+		nbr++;
 	}
-	else if (is_in_base(*nbr, base) > 0)
+	if (is_in_base(*nbr, base) > 0)
 	{
 		while (is_in_base(nbr[power], base) && nbr[power] != '\0')
 			power++;
@@ -104,7 +106,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		return (to_base(i_nbr, base_to, sign));
 }
 
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	*res;
 
@@ -115,4 +117,4 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		 argv[1], argv[2], argv[3], res);
 	}
 	return (0);
-}*/
+}
