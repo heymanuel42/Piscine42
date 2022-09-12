@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 09:19:08 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:31:54 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_atoi_base(char *nbr, char *base, int acc, int *sign)
 		while (is_in_base(nbr[power], base) && nbr[power] != '\0')
 			power++;
 		acc += get_id_from_base(base, *nbr) * ft_pow(base_len, power - 1);
-		ft_atoi_base(++nbr, base, acc, sign);
+		return (ft_atoi_base(++nbr, base, acc, sign));
 	}
 	return (acc);
 }
