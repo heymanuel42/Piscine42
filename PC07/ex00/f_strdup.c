@@ -6,14 +6,14 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:11:39 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/08 16:09:01 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:49:15 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int	ft_strlen(char *s1)
+int	ft_strlen1(char *s1)
 {
 	int	length;
 
@@ -28,7 +28,7 @@ char	*ft_strdup(char *src)
 	char	*cpy;
 	char	*start;
 
-	cpy = malloc(ft_strlen(src) * sizeof(char *));
+	cpy = malloc(ft_strlen1(src) * sizeof(char));
 	start = cpy;
 	while (*src)
 	{

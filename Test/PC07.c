@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 09:51:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/10 12:19:08 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:53:45 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	free(cpy);
 
 	int *range = ft_range(40,100);
-	for(int i = 0; i <= 60; i++)
+	for(int i = 0; i < 60; i++)
 	{
 		printf("%d ,",range[i]);
 	}
@@ -35,7 +35,7 @@ int	main(void)
 
 	if(range != NULL)
 	{
-		for(int i = 0; i < 20; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			printf("%d\n",range[i]);
 		}

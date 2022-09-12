@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:28:09 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/10 12:24:05 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:51:44 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 		return (0);
 	}
 	i = min;
-	data = (int *)malloc((max - min));
+	data = (int *)malloc((max - min) * sizeof(int));
 	while (i < max)
 	{
 		data[i - min] = i;

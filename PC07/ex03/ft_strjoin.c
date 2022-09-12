@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:01:47 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/10 12:23:49 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:49:35 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_strlen_4(char *str)
 	return (length);
 }
 
-char	*append(char *str, char *a, char *sep)
+char	*append1(char *str, char *a, char *sep)
 {
 	char	*res;
 	int		length;
@@ -56,10 +56,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		return (0);
 	}
 	i = 1;
-	res = append("", strs[0], sep);
+	res = append1("", strs[0], sep);
 	while (i < size)
 	{
-		res = append(res, strs[i], sep);
+		res = append1(res, strs[i], sep);
 		i++;
 	}
 	return (res);

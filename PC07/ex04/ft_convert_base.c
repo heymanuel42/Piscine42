@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 00:46:20 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 09:19:08 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ int	ft_atoi_base(char *nbr, char *base, int acc, int *sign)
 		acc += get_id_from_base(base, *nbr) * ft_pow(base_len, power - 1);
 		ft_atoi_base(++nbr, base, acc, sign);
 	}
-	else
-		return (acc);
+	return (acc);
 }
 
 char	*to_base(int nbr, char *base, int sign)
@@ -104,3 +103,16 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	else
 		return (to_base(i_nbr, base_to, sign));
 }
+
+/*int	main(int argc, char **argv)
+{
+	char	*res;
+
+	if (argc == 4)
+	{
+		res = ft_convert_base(argv[1], argv[2], argv[3]);
+		printf("\"%s\" in base(\"%s\") to base(\"%s\") = \"%s\"\n",
+		 argv[1], argv[2], argv[3], res);
+	}
+	return (0);
+}*/
