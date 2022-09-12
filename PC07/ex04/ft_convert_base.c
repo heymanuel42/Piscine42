@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 18:59:04 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:01:29 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		return (to_base(i_nbr, base_to, sign));
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	char	*res;
 
@@ -117,4 +117,4 @@ int	main(int argc, char **argv)
 		 argv[1], argv[2], argv[3], res);
 	}
 	return (0);
-}
+}*/
