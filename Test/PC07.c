@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PC07.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 09:51:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 15:53:45 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/12 17:55:03 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 char	*ft_strdup(char *s1);
 int		*ft_range(int min, int max);
 int		ft_ultimate_range(int **range, int min, int max);
-char	*ft_strjoin(int size , char **s2,char *sep);
-int	main(void)
+char	*ft_strjoin(int size, char **s2, char *sep);
+
+int	main(int argc, char **argv)
 {
 	char	*s1 = "Hello world";
 	char	*cpy = ft_strdup(s1);
-	printf("%s\n",cpy);
+
+	printf("%s\n", s1);
+	cpy[3] = 'X';
+	printf("%s\n", cpy);
 	free(cpy);
 
-	int *range = ft_range(40,100);
+	int	*range = ft_range(40,100);
 	for(int i = 0; i < 60; i++)
 	{
-		printf("%d ,",range[i]);
+		printf("%d ,", range[i]);
 	}
+
 	printf("\n");
 	free(range);
 
@@ -42,11 +47,15 @@ int	main(void)
 		free(range);
 	}
 
-	char *res;
-	char *tab[] = {"Hello", "World","How are you doing"};
-	res = ft_strjoin(3,tab,", ");
+	if (argc > 2)
+	{
+		char	*res;
+		res = ft_strjoin(argc, argv, ", ");
 
-	printf("%s",res);
-	free(res);
+		printf("%s\n",res);
+		free(res);
+	}
+
+
 	return 0;
 }
