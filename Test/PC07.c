@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PC07.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 09:51:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 17:30:51 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 20:57:50 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	main(int argc, char **argv)
 	printf("\n");
 	free(range);
 
-	char *test[10000];
-	for(int i = 0; i < 10000; i++)
+	char *test[30];
+	for(int i = 0; i < 30; i++)
 	{
 		test[i] = "salut";
 	}
 	(void) argc;
 	(void) argv;
 		char	*res;
-		res = ft_strjoin(10000, test, ", ");
+		res = ft_strjoin(30, test, ", ");
 
 		printf("%s\n",res);
 		free(res);
@@ -80,8 +80,8 @@ int	main(int argc, char **argv)
 	}
 	free(splited_sentence);
 
-	char *sentece2 = "Hello espace this espace is espace not espace readable";
-		splited_sentence = ft_split(sentece2," espace ");
+	char *sentece2 = "there are, a lot of:separators * in this %sentence";
+		splited_sentence = ft_split(sentece2,",:*%");
 	while(splited_sentence[split_cnt] != NULL)
 	{
 		printf("%s\n",splited_sentence[split_cnt]);
@@ -94,8 +94,8 @@ int	main(int argc, char **argv)
 	}
 	free(splited_sentence);
 
-	char *sentence3 = "       	            	    	             ";
-	splited_sentence = ft_split(sentence3,"    ");
+	char *sentence3 = "Hello, , World, Salut";
+	splited_sentence = ft_split(sentence3,",Sl");
 	while(splited_sentence[split_cnt] != NULL)
 	{
 		printf("%s\n",splited_sentence[split_cnt]);
