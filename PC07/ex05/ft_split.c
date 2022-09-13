@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 23:42:08 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:43:33 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,5 @@ char	**ft_split(char *str, char *charset)
 		str += 1 + sepidx;
 	}
 	array[i] = NULL;
-	while (i < nwords)
-	{
-		free(array[i]);
-		i++;
-	}
 	return (array);
 }
