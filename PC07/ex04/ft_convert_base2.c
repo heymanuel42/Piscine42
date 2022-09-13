@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:02:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 19:01:20 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 20:08:25 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,25 @@ int	base_is_valid(char *base)
 	return (1);
 }
 
-char	*append(char *str, char a, char *sep)
+char	*append(char *str, char a)
 {
 	char	*res;
 	int		length;
 	int		i;
 
-	length = ft_strlen(str) + 1 + ft_strlen(sep);
+	length = ft_strlen(str) + 1 + 1;
 	res = malloc(length * sizeof(char));
 	i = 0;
 	if (ft_strlen(str) > 0)
 	{
-		while (*str != '\0')
-			res[i++] = *(str++);
-		while (*sep != '\0')
-			res[i++] = *(sep++);
+		while (str[i] != '\0')
+		{
+			res[i] = str[i];
+			i++;
+		}
 	}
 	res[i] = a;
+	res[i + 1] = '\0';
+	free(str);
 	return (res);
 }

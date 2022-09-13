@@ -3,38 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 12:14:23 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:42:08 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	if (n == 0)
-		return (0);
-	while (n - 1 > 0 && *s1 != '\0' && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-		n--;
-	}
-	return (*s1 - *s2);
-}
-
-int	ft_strlen2(char *str)
-{
-	int	length;
-
-	length = 0;
-	while (str[length] != '\0')
-		length++;
-	return (length);
-}
 
 char	*substring(char *s, int start, int end)
 {
@@ -42,7 +19,7 @@ char	*substring(char *s, int start, int end)
 	char	*begin;
 	int		i;
 
-	sub = malloc(sizeof(end - start) * sizeof (char));
+	sub = malloc(sizeof(end - start +1) * sizeof (char));
 	begin = sub;
 	i = start;
 	while (i < end)
@@ -51,19 +28,67 @@ char	*substring(char *s, int start, int end)
 		i++;
 		sub++;
 	}
+	*sub = '\0';
 	return (begin);
 }
 
 int	getnextsep(char *str, char *charset)
 {
 	int	i;
-	int	charset_len;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		while (charset[j] != '\0')
+		{
+			if (str[i] == charset[j])
+				return (i);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_isspace(char *str)
+{
+	while (*str == '\t'
+		|| *str == '\n'
+		|| *str == '\v'
+		|| *str == '\f'
+		|| *str == '\r'
+		|| *str == ' ')
+		str++;
+	if (*str == '\0')
+		return (1);
+	else
+		return (0);
+}
+
+int	count_words(char *str, char *charset)
+{
+	int		i;
+	int		j;
+	int		nwords;
 
 	i = 0;
-	charset_len = ft_strlen2(charset);
-	while (ft_strncmp(charset, (str + i), charset_len) != 0 && str[i] != '\0')
-		i++;
-	return (i);
+	j = 0;
+	nwords = 0;
+	while (charset[j] != '\0')
+	{
+		while (str[i] != '\0')
+		{
+			if (str[i] == charset[j])
+					++nwords;
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (++nwords);
 }
 
 char	**ft_split(char *str, char *charset)
@@ -73,24 +98,24 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		sepidx;
 
-	i = 0;
-	nwords = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_strncmp((str + i), charset, ft_strlen2(charset)) == 0)
-			nwords++;
-		i++;
-	}
-	nwords++;
+	nwords = count_words(str, charset);
 	array = malloc((nwords + 1) * sizeof(char *));
 	i = 0;
-	while (i < nwords)
+	while (*str != '\0')
 	{
 		sepidx = getnextsep(str, charset);
-		array[i] = substring(str, 0, sepidx);
-		i ++;
-		str += ft_strlen2(charset) + sepidx;
+		if (!ft_isspace(substring(str, 0, sepidx)))
+		{
+			array[i] = substring(str, 0, sepidx);
+			i ++;
+		}
+		str += 1 + sepidx;
 	}
 	array[i] = NULL;
+	while (i < nwords)
+	{
+		free(array[i]);
+		i++;
+	}
 	return (array);
 }

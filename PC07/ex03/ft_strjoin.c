@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:01:47 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 14:02:32 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:48:37 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+int	get_final_length(int size, char **strs, char *sep)
 {
-	char	*res;
-	char	*start;
-	int		i;
-	int		length;
+	int	i;
+	int	length;
 
 	length = 0;
 	i = 0;
@@ -54,7 +52,20 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		i++;
 	}
 	length -= ft_strlen_4(sep);
-	res = malloc(length * sizeof(char));
+	return (length);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*res;
+	char	*start;
+	int		i;
+
+	if (size <= 0)
+		return (malloc(1));
+	res = malloc(get_final_length(size, strs, sep) * sizeof(char));
+	if (res == NULL)
+		return (malloc(1));
 	start = res;
 	i = 0;
 	while (i < size)

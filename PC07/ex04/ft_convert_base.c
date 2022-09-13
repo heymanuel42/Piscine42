@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 19:01:29 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 20:08:31 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int		is_in_base(char nb, char*base);
 int		base_is_valid(char *base);
 int		ft_strlen(char *str);
-char	*append(char *str, char a, char *sep);
+char	*append(char *str, char a);
 
 int	get_id_from_base(char *base, char c)
 {
@@ -78,14 +78,17 @@ char	*to_base(int nbr, char *base, int sign)
 
 	base_length = ft_strlen(base);
 	if (sign < 0)
+	{
+		res = malloc(1);
 		res = "-";
+	}
 	else
-		res = "";
+		res = malloc(1);
 	if (nbr >= 1)
 	{
 		res = append(
 				to_base(nbr / base_length, base, sign),
-				base[nbr % base_length], "");
+				base[nbr % base_length]);
 		return (res);
 	}
 	return (res);
@@ -105,16 +108,3 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	else
 		return (to_base(i_nbr, base_to, sign));
 }
-
-/*int	main(int argc, char **argv)
-{
-	char	*res;
-
-	if (argc == 4)
-	{
-		res = ft_convert_base(argv[1], argv[2], argv[3]);
-		printf("\"%s\" in base(\"%s\") to base(\"%s\") = \"%s\"\n",
-		 argv[1], argv[2], argv[3], res);
-	}
-	return (0);
-}*/
