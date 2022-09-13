@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:01:47 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 15:49:35 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:02:32 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,44 +23,46 @@ int	ft_strlen_4(char *str)
 	return (length);
 }
 
-char	*append1(char *str, char *a, char *sep)
+char	*ft_strcat(char *dest, char *src)
 {
-	char	*res;
-	int		length;
-	int		i;
+	int	dest_length;
+	int	i;
 
-	length = ft_strlen_4(str) + ft_strlen_4(a) + ft_strlen_4(sep);
-	res = malloc(length * sizeof(char));
 	i = 0;
-	if (ft_strlen_4(str) > 0)
+	dest_length = ft_strlen_4(dest);
+	while (src[i] != '\0')
 	{
-		while (*str != '\0')
-			res[i++] = *(str++);
-		while (*sep != '\0')
-			res[i++] = *(sep++);
+		dest[dest_length + i] = src[i];
+		i++;
 	}
-	while (*a != '\0')
-		res[i++] = *(a++);
-	return (res);
+	dest[dest_length + i] = '\0';
+	return (dest);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*res;
+	char	*start;
 	int		i;
+	int		length;
 
-	if (size <= 0)
-	{
-		res = malloc(1);
-		res = "";
-		return (0);
-	}
-	i = 1;
-	res = append1("", strs[0], sep);
+	length = 0;
+	i = 0;
 	while (i < size)
 	{
-		res = append1(res, strs[i], sep);
+		length += ft_strlen_4(strs[i]) + ft_strlen_4(sep);
 		i++;
 	}
-	return (res);
+	length -= ft_strlen_4(sep);
+	res = malloc(length * sizeof(char));
+	start = res;
+	i = 0;
+	while (i < size)
+	{
+		res = ft_strcat(res, strs[i]);
+		if (i != size -1)
+			res = ft_strcat(res, sep);
+		i++;
+	}
+	return (start);
 }

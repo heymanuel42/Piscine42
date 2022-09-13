@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:12:34 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 18:32:23 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:44:44 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	*ft_range(int min, int max)
 	if (min >= max)
 		return (NULL);
 	i = min;
-	range = (int *)malloc(sizeof(int *) * (max - min));
+	range = (int *)malloc(sizeof(int) * (max - min));
 	while (i < max)
 	{
 		range[i - min] = i;

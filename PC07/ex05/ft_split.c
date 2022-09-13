@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 19:52:55 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:14:23 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	return (*s1 - *s2);
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen2(char *str)
 {
 	int	length;
 
@@ -60,8 +60,8 @@ int	getnextsep(char *str, char *charset)
 	int	charset_len;
 
 	i = 0;
-	charset_len = ft_strlen(charset);
-	while (ft_strncmp(charset, (str+i), charset_len) != 0)
+	charset_len = ft_strlen2(charset);
+	while (ft_strncmp(charset, (str + i), charset_len) != 0 && str[i] != '\0')
 		i++;
 	return (i);
 }
@@ -70,39 +70,27 @@ char	**ft_split(char *str, char *charset)
 {
 	char	**array;
 	int		nwords;
-	int		widx;
 	int		i;
+	int		sepidx;
 
 	i = 0;
 	nwords = 0;
 	while (str[i] != '\0')
 	{
-		if (ft_strncmp((str+i), charset, 1) == 0)
+		if (ft_strncmp((str + i), charset, ft_strlen2(charset)) == 0)
 			nwords++;
 		i++;
 	}
-	printf("%d\n", nwords);
-
-	widx = 0;
-	nwords = i;
-	array = malloc(nwords * sizeof(char *));
+	nwords++;
+	array = malloc((nwords + 1) * sizeof(char *));
 	i = 0;
 	while (i < nwords)
 	{
-		printf("%d\n",getnextsep(str,charset));
-		i++;
+		sepidx = getnextsep(str, charset);
+		array[i] = substring(str, 0, sepidx);
+		i ++;
+		str += ft_strlen2(charset) + sepidx;
 	}
-
+	array[i] = NULL;
 	return (array);
-}
-
-int	main(int argc, char **argv)
-{
-	(void) argv;
-	if (argc > 1)
-	{
-		char **tab = ft_split(argv[1],",");
-
-	}
-	return 0;
 }

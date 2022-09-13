@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   PC08.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 16:28:09 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 13:53:47 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/13 15:35:04 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/13 15:44:30 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_stock_str.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-int	ft_ultimate_range(int **range, int min, int max)
-{
-	int	*data;
-	int	i;
+struct	s_stock_str		*ft_str_to_tab(int ac, char **av);
+void					ft_show_tab(t_stock_str *par);
 
-	if (min >= max)
+int	main(int argc, char **argv)
+{
+	struct s_stock_str	*tab;
+
+	tab = ft_str_to_tab(argc, argv);
+	tab[2].copy[0] = 'x';
+	ft_show_tab(tab);
+	for(int i = 0; i < argc+1; i++)
 	{
-		*range = NULL;
-		return (0);
+		free(tab[i].str);
+		free(tab[i].copy);
 	}
-	i = min;
-	data = (int *)malloc((max - min) * sizeof(int));
-	if (data == NULL)
-	{
-		*range = NULL;
-		return (-1);
-	}
-	while (i < max)
-	{
-		data[i - min] = i;
-		i++;
-	}
-	*range = data;
-	return (max - min);
+	free(tab);
 }
