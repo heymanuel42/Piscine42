@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 20:08:31 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:53:35 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int		is_in_base(char nb, char*base);
 int		base_is_valid(char *base);
@@ -51,7 +51,7 @@ int	ft_atoi_base(char *nbr, char *base, int acc, int *sign)
 	base_len = ft_strlen(base);
 	power = 0;
 	while ((*nbr == '\t' || *nbr == '\n' || *nbr == '\v'
-			|| *nbr == '\f' || *nbr == '\r' || *nbr == ' '))
+			|| *nbr == '\f' || *nbr == '\r' || *nbr == ' ' ))
 	{
 		nbr++;
 	}
@@ -78,12 +78,9 @@ char	*to_base(int nbr, char *base, int sign)
 
 	base_length = ft_strlen(base);
 	if (sign < 0)
-	{
-		res = malloc(1);
-		res = "-";
-	}
+		res = append("", '-');
 	else
-		res = malloc(1);
+		res = append("", 0);
 	if (nbr >= 1)
 	{
 		res = append(
@@ -96,15 +93,16 @@ char	*to_base(int nbr, char *base, int sign)
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int	sign;
-	int	i_nbr;
+	int		sign;
+	int		i_nbr;
 
 	sign = 1;
 	if (!base_is_valid(base_from) || !base_is_valid(base_to))
 		return (NULL);
 	i_nbr = ft_atoi_base(nbr, base_from, 0, &sign);
+	printf("%d\n",i_nbr);
 	if (i_nbr == 0)
-		return ("0");
+		return (malloc(sizeof(char)));
 	else
 		return (to_base(i_nbr, base_to, sign));
 }

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 16:28:09 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/14 09:44:25 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/12 09:32:55 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/14 10:08:37 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
+# include <unistd.h>
+# define TRUE 1
+# define FALSE 0
+# define SUCCESS 0
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG "I have an odd number of arguments.\n"
+# define EVEN(N) ((N%2==0) ? TRUE : FALSE)
 
-int	ft_ultimate_range(int **range, int min, int max)
-{
-	int	*data;
-	int	i;
+typedef int	t_bool;
 
-	if (min >= max)
-	{
-		*range = NULL;
-		return (0);
-	}
-	i = min;
-	data = (int *)malloc((max - min) * sizeof(int));
-	if (data == NULL)
-	{
-		*range = NULL;
-		return (-1);
-	}
-	while (i < max)
-	{
-		data[i - min] = i;
-		i++;
-	}
-	*range = data;
-	return (max - min);
-}
+#endif

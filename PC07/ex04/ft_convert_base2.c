@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:02:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 20:08:25 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:47:25 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
@@ -98,6 +98,7 @@ char	*append(char *str, char a)
 	}
 	res[i] = a;
 	res[i + 1] = '\0';
-	free(str);
+	if (*str != '\0' )
+		free(str);
 	return (res);
 }

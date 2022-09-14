@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_strdup.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:11:39 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/12 15:49:15 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 11:55:34 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_strlen1(char *s1)
 {
@@ -23,19 +22,27 @@ int	ft_strlen1(char *s1)
 	return (length);
 }
 
+char	*ft_strcpy(char *dest, char *src)
+{
+	char	*start;
+
+	start = dest;
+	while (*src)
+	{
+		*dest = *src;
+		src++;
+		dest++;
+	}
+	*dest = '\0';
+	return (start);
+}
+
 char	*ft_strdup(char *src)
 {
 	char	*cpy;
-	char	*start;
 
 	cpy = malloc(ft_strlen1(src) * sizeof(char));
-	start = cpy;
-	while (*src)
-	{
-		*cpy = *src;
-		src++;
-		cpy++;
-	}
-	cpy = start;
-	return (cpy);
+	if (cpy == NULL)
+		return (NULL);
+	return (ft_strcpy(cpy, src));
 }

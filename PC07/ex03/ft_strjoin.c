@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:01:47 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/13 18:48:37 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:23:32 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_strlen_4(char *str)
 {
@@ -58,15 +57,17 @@ int	get_final_length(int size, char **strs, char *sep)
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*res;
-	char	*start;
 	int		i;
+	int		final_length;
 
 	if (size <= 0)
-		return (malloc(1));
+		return (malloc(sizeof(char)));
+	final_length = get_final_length(size, strs, sep);
+	if (final_length <= 0)
+		return (malloc(sizeof(char)));
 	res = malloc(get_final_length(size, strs, sep) * sizeof(char));
 	if (res == NULL)
-		return (malloc(1));
-	start = res;
+		return (malloc(sizeof(char)));
 	i = 0;
 	while (i < size)
 	{
@@ -75,5 +76,5 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 			res = ft_strcat(res, sep);
 		i++;
 	}
-	return (start);
+	return (res);
 }
