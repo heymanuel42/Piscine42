@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:01:47 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/14 14:23:32 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:16:08 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-int	get_final_length(int size, char **strs, char *sep)
+int	get_final_length(int size, char **strs, char *sep, char **res)
 {
 	int	i;
 	int	length;
@@ -51,6 +51,8 @@ int	get_final_length(int size, char **strs, char *sep)
 		i++;
 	}
 	length -= ft_strlen_4(sep);
+	if (length > 0)
+		*res = malloc(length * sizeof(char));
 	return (length);
 }
 
@@ -60,15 +62,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	int		final_length;
 
-	if (size <= 0)
-		return (malloc(sizeof(char)));
-	final_length = get_final_length(size, strs, sep);
-	if (final_length <= 0)
-		return (malloc(sizeof(char)));
-	res = malloc(get_final_length(size, strs, sep) * sizeof(char));
-	if (res == NULL)
-		return (malloc(sizeof(char)));
 	i = 0;
+	final_length = get_final_length(size, strs, sep, &res);
+	if (final_length <= 0 || res == NULL)
+		return (malloc(sizeof(char)));
 	while (i < size)
 	{
 		res = ft_strcat(res, strs[i]);

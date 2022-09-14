@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PC07.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 09:51:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/14 15:54:44 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:50:48 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	char	*s1 = "Hello world";
 	char	*cpy = ft_strdup(s1);
 
+
 	printf("%s\n", s1);
 	cpy[3] = 'X';
 	printf("%s\n", cpy);
@@ -38,18 +39,18 @@ int	main(int argc, char **argv)
 	printf("\n");
 	free(range);
 
-	char *test[30];
-	for(int i = 0; i < 30; i++)
+	char *test[10];
+	for(int i = 0; i < 10; i++)
 	{
-		test[i] = "salut";
+		test[i] = "Hello dofghasdghadioghadio nfasoifjasdofhasopfhjasdiofhaooisdfh";
 	}
 	(void) argc;
 	(void) argv;
-		char	*res;
-		res = ft_strjoin(30, test, ", ");
+	char	*res;
+	res = ft_strjoin(10, test, "##^\n");
 
-		printf("%s\n",res);
-		free(res);
+	printf("%s\n",res);
+	free(res);
 
 
 	char *res2;
@@ -69,11 +70,11 @@ int	main(int argc, char **argv)
 	printf("%s %p\n",res2,res2);
 	free(res2);
 	res2 = 0;
-	res2 = ft_convert_base("","0123456789","01");
+	res2 = ft_convert_base("-0","0123456789","01");
 	printf("%s %p\n",res2,res2);
 	free(res2);
 	res2 = 0;
-	res2 = ft_convert_base("-10","01234567","01");
+	res2 = ft_convert_base("-100","01234567","01");
 	printf("%s %p\n",res2,res2);
 	free(res2);
 	res2 = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:54:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/14 15:53:35 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:52:52 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,19 @@ int	ft_pow(int nb, int power)
 		return (nb * ft_pow(nb, power - 1));
 }
 
-int	ft_atoi_base(char *nbr, char *base, int acc, int *sign)
+int	ft_atoi_base(char *nbr, char *base, int acc)
 {
 	int	power;
 	int	base_len;
 
 	base_len = ft_strlen(base);
 	power = 0;
-	while ((*nbr == '\t' || *nbr == '\n' || *nbr == '\v'
-			|| *nbr == '\f' || *nbr == '\r' || *nbr == ' ' ))
-	{
-		nbr++;
-	}
-	while (*nbr == '+' || *nbr == '-')
-	{
-		if (*nbr == '-')
-			*sign *= -1;
-		nbr++;
-	}
 	if (is_in_base(*nbr, base) > 0)
 	{
 		while (is_in_base(nbr[power], base) && nbr[power] != '\0')
 			power++;
 		acc += get_id_from_base(base, *nbr) * ft_pow(base_len, power - 1);
-		return (ft_atoi_base(++nbr, base, acc, sign));
+		return (ft_atoi_base(++nbr, base, acc));
 	}
 	return (acc);
 }
@@ -79,7 +68,7 @@ char	*to_base(int nbr, char *base, int sign)
 	base_length = ft_strlen(base);
 	if (sign < 0)
 		res = append("", '-');
-	else
+	if (sign > 0)
 		res = append("", 0);
 	if (nbr >= 1)
 	{
@@ -99,10 +88,19 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	sign = 1;
 	if (!base_is_valid(base_from) || !base_is_valid(base_to))
 		return (NULL);
-	i_nbr = ft_atoi_base(nbr, base_from, 0, &sign);
-	printf("%d\n",i_nbr);
+	while ((*nbr == '\t' || *nbr == '\n' || *nbr == '\v'
+			|| *nbr == '\f' || *nbr == '\r' || *nbr == ' ' ))
+	{
+		nbr++;
+	}
+	while (*nbr == '+' || *nbr == '-')
+	{
+		if (*nbr == '-')
+			sign *= -1;
+		nbr++;
+	}
+	i_nbr = ft_atoi_base(nbr, base_from, 0);
 	if (i_nbr == 0)
-		return (malloc(sizeof(char)));
-	else
-		return (to_base(i_nbr, base_to, sign));
+		return (append("", base_to[0]));
+	return (to_base(i_nbr, base_to, sign));
 }
