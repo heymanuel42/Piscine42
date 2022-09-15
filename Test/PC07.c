@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 09:51:29 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/14 19:50:48 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:49:58 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,79 +79,7 @@ int	main(int argc, char **argv)
 	free(res2);
 	res2 = 0;
 
-	char *sentence = "Hello this is a sentence with 8 words";
 
-	char **splited_sentence;
-	int split_cnt = 0;
-
-	splited_sentence  = ft_split(sentence," ");
-
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s\n",splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-	splited_sentence = ft_split(sentence,"i");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s\n",splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-
-	char *sentece2 = "there are, a lot of:separators * in this %sentence";
-		splited_sentence = ft_split(sentece2,",:*%");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s %p\n",splited_sentence[split_cnt], splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-
-	char *sentence3 = "Hello, , World, Salut";
-	splited_sentence = ft_split(sentence3,",Sl");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s %p\n",splited_sentence[split_cnt], splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-
-	split_cnt = 0;
-	char *sentence4 = "T5J0 	QQPvy4clLORZ	RDjQMoyhc9Xe0GIwJ9oAOo0Af8JXz" ;
-	splited_sentence = ft_split(sentence4,"5U6Fx");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s %p\n",splited_sentence[split_cnt], splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
 
 
 
