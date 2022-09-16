@@ -1,5 +1,4 @@
 #!/bin/bash
 
-gcc -c *.c
-ar rsc  libft.a *.o
-rm *.o
+gcc -c *.c -Wall -Werror -Wextra
+ar r  libft.a *.o

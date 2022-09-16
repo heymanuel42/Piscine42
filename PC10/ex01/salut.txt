@@ -1,0 +1,127 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/16 09:31:11 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/16 12:25:31 by ejanssen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "includes/utils.h"
+
+int	open_file(char *file)
+{
+	int		file_read;
+
+	file_read = open(file, O_RDONLY);
+	if (file_read < 0)
+		return (errno);
+	return (file_read);
+}
+
+int	display_file(char *file)
+{
+	int		fd;
+	int		cursor;
+	char	buffer[BUFFER_SIZE];
+	int		read_bytes;
+
+	if (!ft_strcmp(file, "-"))
+	{
+		read_bytes = read(0, buffer, BUFFER_SIZE);
+		write(1, buffer, read_bytes);
+	}
+	else
+	{
+		fd = open_file(file);
+		if (fd < 0)
+			return (fd);
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		cursor = 0;
+		while (cursor < read_bytes)
+		{
+			ft_putchar(buffer[cursor]);
+			cursor++;
+		}
+		close(fd);
+	}
+	return (0);
+}
+
+int	write_files(char **argv)
+{
+	char	buffer[BUFFER_SIZE];
+	int		cursor;
+	int		i;
+	int		fd;
+	int		read_bytes;
+
+	i = 1;
+	cursor = 0;
+	read_bytes = 0;
+	while (ft_strcmp(argv[i], ">"))
+	{
+		fd = open(argv[i], O_RDONLY);
+		if (fd < 0)
+			return (fd);
+		read_bytes += read(fd, buffer + cursor, BUFFER_SIZE - read_bytes);
+		while (cursor++ < read_bytes)
+			;
+		close(fd);
+		i++;
+	}
+	fd = open(argv[i], O_WRONLY);
+	i = 0;
+	write(fd, buffer, read_bytes);
+	close(fd);
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	int	i;
+	int	dest;
+
+	if (argc == 0)
+		return (EINVAL);
+	i = 1;
+	dest = -1;
+	dest = ft_contains(argv, ">", argc);
+	if (dest > 0)
+		return (write_files(argv));
+	while (i < argc)
+	{
+		display_file(argv[i]);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+CC 				= gcc
+CFLAGS 			= -Wall -Werror -Wextra
+INCLUDES  		= -Iincludes/
+SRC 			= src/
+DEPENDENCIES 	= ft.h
+OBJ				= src/ft_putchar.o src/ft_putstr.o main.o src/ft_strcmp.o src/ft_strlen.o src/ft_strncmp.o src/ft_contains.o
+PROGRAM			= ft_cat
+
+%.o : %.c $(DEPENDENCIES)
+	$(CC) -c $@ $< $(CFLAGS)
+
+
+all: $(PROGRAM)
+
+
+$(PROGRAM): $(OBJ)
+	$(CC) -o $@ $^
+
+clean:
+	rm -f $(OBJ) $(PROGRAM)
+
+fclean: clean
+	rm -f *.a
+
+re : fclean all

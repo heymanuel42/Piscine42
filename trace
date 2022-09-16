@@ -1,0 +1,1084 @@
+
+
+Trace Details
+ejanssen's Team
+
+Team Users
+ejanssen
+
+    Project
+    c-piscine-c-09
+
+    Corrected at
+    2022-09-16 13:43:26
+
+    Evaluated on
+    c1r5s2.42lausanne.ch
+
+    Intranet Team
+
+    4415946
+
+    Git URL
+
+    git@vogsphere.42lausanne.ch:vogsphere/intra-uuid-8cd55fa2-f069-48fa-84f8-69f91a43dead-4415946-ejanssen
+
+Grade & Comment30%
+
+ex00: OK | ex01: KO | ex02: KO
+
+
+
+Trace
+
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c1r5s2.42lausanne.ch
+Darwin 19.6.0 x86_64
+$> date
+Fri Sep 16 13:43:19 CEST 2022
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: git@vogsphere.42lausanne.ch:vogsphere/intra-uuid-8cd55fa2-f069-48fa-84f8-69f91a43dead-4415946-ejanssen
+
+= Git history ==================================================================
+$> git -C /tmp/tmp1lxc0ia4/user log --pretty='%H - %an, %ad : %s'
+0fb6fdd792e3904f00002f8939932f3d2bf38f9c - Emmanuel Janssens, Fri Sep 16 11:40:51 2022 +0200 : :)
+
+= Collected files ==========================================
+$> ls -lAR /tmp/tmp1lxc0ia4/user
+total 8
+-rw-r--r--  1 root  wheel  516 Sep 16 13:43 __GIT_HISTORY
+drwxr-xr-x  8 root  wheel  256 Sep 16 13:43 ex00
+drwxr-xr-x  3 root  wheel   96 Sep 16 13:43 ex01
+drwxr-xr-x  3 root  wheel   96 Sep 16 13:43 ex02
+
+/tmp/tmp1lxc0ia4/user/ex00:
+total 48
+-rw-r--r--  1 root  wheel   959 Sep 16 13:43 ft_putchar.c
+-rw-r--r--  1 root  wheel  1021 Sep 16 13:43 ft_putstr.c
+-rwxr-xr-x  1 root  wheel  1040 Sep 16 13:43 ft_strcmp.c
+-rw-r--r--  1 root  wheel  1007 Sep 16 13:43 ft_strlen.c
+-rw-r--r--  1 root  wheel   969 Sep 16 13:43 ft_swap.c
+-rw-r--r--  1 root  wheel    64 Sep 16 13:43 libft_creator.sh
+
+/tmp/tmp1lxc0ia4/user/ex01:
+total 8
+-rw-r--r--  1 root  wheel  377 Sep 16 13:43 makefile
+
+/tmp/tmp1lxc0ia4/user/ex02:
+total 8
+-rw-r--r--  1 root  wheel  4093 Sep 16 13:43 ft_split.c
+
+= ex00 =========================================================================
+====================================================================
+Generating tests
+Tests --------------------------------------------------------------
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+void ft_putchar(char c);
+void ft_swap(int *a, int *b);
+void ft_putstr(char *str);
+int  ft_strlen(char *str);
+int  ft_strcmp(char *s1, char *s2);
+
+int main(void)
+{
+    int a;
+    int b;
+    int i;
+
+	write(1, "ft_putchar : ", 13);
+	ft_putchar(125);
+	write(1, "\n", 1);
+	write(1, "ft_putstr : ", 12);
+	ft_putstr("pVfVeZAGxLTGEjkPxOHFEbNVfqc5wOwWHCE1KGRoQ7fz1W2xTQMouD24hrdf7svQM8gczSAnomU7q0sXWkxRBTkE6ZbQ4CcZBetu0wd2eS25aFe3laguq5u2FKYLDrka\n");
+	a = 2104728250;
+	b = -1433664681;
+	ft_swap(&a, &b);
+	printf("ft_swap : %d,%d\n", a, b);
+
+	a = 521247905;
+	b = -1861375857;
+	ft_swap(&a, &b);
+	printf("ft_swap : %d,%d\n", a, b);
+
+	a = -1507470830;
+	b = 1573247330;
+	ft_swap(&a, &b);
+	printf("ft_swap : %d,%d\n", a, b);
+
+	a = 936337796;
+	b = 1266144311;
+	ft_swap(&a, &b);
+	printf("ft_swap : %d,%d\
+n", a, b);
+
+	a = 1011201574;
+	b = 1812224695;
+	ft_swap(&a, &b);
+	printf("ft_swap : %d,%d\n", a, b);
+
+	printf("ft_strlen : %d\n", ft_strlen("XpjJnNYC8l"));
+	printf("ft_strlen : %d\n", ft_strlen("TouKFRWpfjavrP0r9o6pd0YhrQqs93DVYEjB9AQurejzKKU7REmofbHPNGBw8yAjVK9unVPqsD"));
+	printf("ft_strlen : %d\n", ft_strlen("j5yuuywYjniPS1HnrUkNtEOCJsqBGlQqQVF7URIYRsgCvp"));
+	printf("ft_strlen : %d\n", ft_strlen("0Y8t740A1SkRJ3MZViYYeNGg5Tm81uK6gGvSvw6jFtmwyotrFMej5JTvgaVPyq7aqgiIxcnXZiDMEVEV4GWX7IIYvocbquA9dRQS"));
+	printf("ft_strlen : %d\n", ft_strlen("Dsx"));
+	i = ft_strcmp("bITH05WJ", "Ry7f6dy7hT");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("1BEA", "E");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("SpDa1L9D", "l");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("gFFklNwM", "9");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("TzVV", "kc");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("", "");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("Z", "Z");
+	printf("ft_strcmp : %d\n", i);
+
+	i = ft_strcmp("this i
+s equal long strings!!!\t\n", "this is equal long strings!!!\t\n");
+	printf("ft_strcmp : %d\n", i);
+
+
+    return (0);
+}
+
+Outputs ------------------------------------------------------------
+ft_putchar : }
+ft_putstr : pVfVeZAGxLTGEjkPxOHFEbNVfqc5wOwWHCE1KGRoQ7fz1W2xTQMouD24hrdf7svQM8gczSAnomU7q0sXWkxRBTkE6ZbQ4CcZBetu0wd2eS25aFe3laguq5u2FKYLDrka
+ft_swap : -1433664681,2104728250
+ft_swap : -1861375857,521247905
+ft_swap : 1573247330,-1507470830
+ft_swap : 1266144311,936337796
+ft_swap : 1812224695,1011201574
+ft_strlen : 10
+ft_strlen : 74
+ft_strlen : 46
+ft_strlen : 100
+ft_strlen : 3
+ft_strcmp : 16
+ft_strcmp : -20
+ft_strcmp : -25
+ft_strcmp : 46
+ft_strcmp : -23
+ft_strcmp : 0
+ft_strcmp : 0
+ft_strcmp : 0
+
+--------------------------------------------------------------------
+Done
+====================================================================
+
+
+total 48
+-rw-r--r--  1 deepthought  deepthought   959 Sep 16 11:43 ft_putchar.c
+-rw-r--r--  1 deepthought  deepthought  1021 Sep 16 11:43 ft_putstr.c
+-rwxr-xr-x  1 deepthought  deepthought  1040 Sep 16 11:43 ft_strcmp.c
+-rw-r--r--  1 deepthought  deepthought  1007 Sep 16 11:43 ft_strlen.c
+-rw-r--r--  1 deepthought  deepthought   969 Sep 16 11:43 ft_swap.c
+-rw-r--r--  1 deepthought  deepthought    64 Sep 16 11:43 libft_creator.sh
+
+
+ar: creating archive libft.a
+
+
+ar: creating archive libft.a
+
+$> gcc -Wextra -Wall -Werror main.c -o user_exe -L. -lft
+
+
+total 24
+-rwxr-xr-x  1 deepthought  deepthought  8696 Sep 16 11:43 user_exe
+
+
+$> ./user_exe
+ft_putchar : }
+ft_putstr : pVfVeZAGxLTGEjkPxOHFEbNVfqc5wOwWHCE1KGRoQ7fz1W2xTQMouD24hrdf7svQM8gczSAnomU7q0sXWkxRBTkE6ZbQ4CcZBetu0wd2eS25aFe3laguq5u2FKYLDrka
+ft_swap : -1433664681,2104728250
+ft_swap : -1861375857,521247905
+ft_swap : 1573247330,-1507470830
+ft_swap : 1266144311,936337796
+ft_swap : 1812224695,1011201574
+ft_strlen : 10
+ft_strlen : 74
+ft_strlen : 46
+ft_strlen : 100
+ft_strlen : 3
+ft_strcmp : 16
+ft_strcmp : -20
+ft_strcmp : -25
+ft_strcmp : 46
+ft_strcmp : -23
+ft_strcmp : 0
+ft_strcmp : 0
+ft_strcmp : 0
+
+
+$> diff -U 3 user_output test1.output | cat -e
+
+
+Diff OK :D
+Grade: 30
+
+= ex01 =========================================================================
+
+total 24
+-rw-r--r--  1 deepthought  deepthought   389 Sep 16 11:43 Makefile.correction
+-rw-r--r--  1 deepthought  deepthought    24 Sep 16 11:43 ft_noway.o
+drwxr-xr-x  3 deepthought  deepthought    96 Mar 25 14:36 includes
+-rw-r--r--  1 deepthought  deepthought  2013 Sep 16 11:43 main.c
+drwxr-xr-x  9 deepthought  deepthought   288 Mar 25 14:36 srcs
+
+./includes:
+total 8
+-rwxr-xr-x  1 deepthought  deepthought  203 Mar 25 14:36 ft.h
+
+./srcs:
+total 56
+-rw-r--r--  1 deepthought  deepthought   18 Mar 25 14:36 ft_bla.c
+-rw-r--r--  1 deepthought  deepthought   14 Mar 25 14:36 ft_bla.o
+-rwxr-xr-x  1 deepthought  deepthought   68 Mar 25 14:36 ft_putchar.c
+-rwxr-xr-x  1 deepthought  deepthought  127 Mar 25 14:36 ft_putstr.c
+-rwxr-xr-x  1 deepthought  deepthought   86 Mar 25 14:36 ft_strcmp.c
+-rwxr-xr-x  1 deepthought  deepthought  113 Mar 25 14:36 ft_strlen.c
+-rwxr-xr-x  1 deepthought  deepthought   87 Mar 25 14:36 ft_swap.c
+
+
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+
+ft_noway.o
+includes
+libft.a
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putchar.o
+ft_putstr.c
+ft_putstr.o
+ft_strcmp.c
+ft_strcmp.o
+ft_strlen.c
+ft_strlen.o
+ft_swap.c
+ft_swap.o
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+libft.a
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putchar.o
+ft_putstr.c
+ft_putstr.o
+ft_strcmp.c
+ft_strcmp.o
+ft_strlen.c
+ft_strlen.o
+ft_swap.c
+ft_swap.o
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+libft.a
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putchar.o
+ft_putstr.c
+ft_putstr.o
+ft_strcmp.c
+ft_strcmp.o
+ft_strlen.c
+ft_strlen.o
+ft_swap.c
+ft_swap.o
+
+
+total 24
+-rw-r--r--  1 deepthought  deepthought   377 Sep 16 11:43 Makefile
+-rw-r--r--  1 deepthought  deepthought    24 Sep 16 11:43 ft_noway.o
+drwxr-xr-x  3 deepthought  deepthought    96 Mar 25 14:36 includes
+-rw-r--r--  1 deepthought  deepthought  2013 Sep 16 11:43 main.c
+drwxr-xr-x  9 deepthought  deepthought   288 Mar 25 14:36 srcs
+
+./includes:
+total 8
+-rwxr-xr-x  1 deepthought  deepthought  203 Mar 25 14:36 ft.h
+
+./srcs:
+total 56
+-rw-r--r--  1 deepthought  deepthought   18 Mar 25 14:36 ft_bla.c
+-rw-r--r--  1 deepthought  deepthought   14 Mar 25 14:36 ft_bla.o
+-rwxr-xr-x  1 deepthought  deepthought   68 Mar 25 14:36 ft_putchar.c
+-rwxr-xr-x  1 deepthought  deepthought  127 Mar 25 14:36 ft_putstr.c
+-rwxr-xr-x  1 deepthought  deepthought   86 Mar 25 14:36 ft_strcmp.c
+-rwxr-xr-x  1 deepthought  deepthought  113 Mar 25 14:36 ft_strlen.c
+-rwxr-xr-x  1 deepthought  deepthought   87 Mar 25 14:36 ft_swap.c
+
+
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+
+
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command
+ft_noway.o
+includes
+main.c
+srcs
+
+./includes:
+ft.h
+
+./srcs:
+ft_bla.c
+ft_bla.o
+ft_putchar.c
+ft_putstr.c
+ft_strcmp.c
+ft_strlen.c
+ft_swap.c
+
+$> diff -U 3 user_output test1.output | cat -e
+--- user_output	2022-09-16 11:43:21.000000000 +0000$
++++ test1.output	2022-09-16 11:43:21.000000000 +0000$
+@@ -52,6 +52,7 @@$
+ sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command$
+ ft_noway.o$
+ includes$
++libft.a$
+ main.c$
+ srcs$
+ $
+@@ -62,13 +63,19 @@$
+ ft_bla.c$
+ ft_bla.o$
+ ft_putchar.c$
++ft_putchar.o$
+ ft_putstr.c$
++ft_putstr.o$
+ ft_strcmp.c$
++ft_strcmp.o$
+ ft_strlen.c$
++ft_strlen.o$
+ ft_swap.c$
++ft_swap.o$
+ sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command$
+ ft_noway.o$
+ includes$
++libft.a$
+ main.c$
+ srcs$
+ $
+@@ -79,13 +86,19 @@$
+ ft_bla.c$
+ ft_bla.o$
+ ft_putchar.c$
++ft_putchar.o$
+ ft_putstr.c$
++ft_putstr.o$
+ ft_strcmp.c$
++ft_strcmp.o$
+ ft_strlen.c$
++ft_strlen.o$
+ ft_swap.c$
++ft_swap.o$
+ sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command$
+ ft_noway.o$
+ includes$
++libft.a$
+ main.c$
+ srcs$
+ $
+@@ -96,7 +109,12 @@$
+ ft_bla.c$
+ ft_bla.o$
+ ft_putchar.c$
++ft_putchar.o$
+ ft_putstr.c$
++ft_putstr.o$
+ ft_strcmp.c$
++ft_strcmp.o$
+ f
+t_strlen.c$
++ft_strlen.o$
+ ft_swap.c$
++ft_swap.o$
+
+
+--- user_output	2022-09-16 11:43:21.000000000 +0000$
++++ test1.output	2022-09-16 11:43:21.000000000 +0000$
+@@ -52,6 +52,7 @@$
+ sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command$
+ ft_noway.o$
+ includes$
++libft.a$
+ main.c$
+ srcs$
+ $
+@@ -62,13 +63,19 @@$
+ ft_bla.c$
+ ft_bla.o$
+ ft_putchar.c$
++ft_putchar.o$
+ ft_putstr.c$
++ft_putstr.o$
+ ft_strcmp.c$
++ft_strcmp.o$
+ ft_strlen.c$
++ft_strlen.o$
+ ft_swap.c$
++ft_swap.o$
+ sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command$
+ ft_noway.o$
+ includes$
++libft.a$
+ main.c$
+ srcs$
+ $
+@@ -79,13 +86,19 @@$
+ ft_bla.c$
+ ft_bla.o$
+ ft_putchar.c$
++ft_putchar.o$
+ ft_putstr.c$
++ft_putstr.o$
+ ft_strcmp.c$
++ft_strcmp.o$
+ ft_strlen.c$
++ft_strlen.o$
+ ft_swap.c$
++ft_swap.o$
+ sed: 1: "/unable to/d;ls -R | gr ...": extra characters at the end of l command$
+ ft_noway.o$
+ includes$
++libft.a$
+ main.c$
+ srcs$
+ $
+@@ -96,7 +109,12 @@$
+ ft_bla.c$
+ ft_bla.o$
+ ft_putchar.c$
++ft_putchar.o$
+ ft_putstr.c$
++ft_putstr.o$
+ ft_strcmp.c$
++ft_strcmp.o$
+ ft_strlen.c$
++ft_strlen.o$
+ ft_swap.c$
++ft_swap.o$
+
+Diff KO :(
+Grade: 0
+
+= ex02 =========================================================================
+/private/var/root/venv2.7/lib/python2.7/site-packages/deepthought-2.0-py2.7.egg/deepthought/helpers.py:30: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in the next release.
+  from cryptography.hazmat.primitives import serialization as crypto_serialization
+
+================================================================================
+Generating test 1
+Cmd ----------------------------------------------------------------------------
+"  	  	" " 	"
+Output -------------------------------------------------------------------------
+
+tab start
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 2
+Cmd ----------------------------------------------------------------------------
+"	 		" " 	"
+Output -------------------------------------------------------------------------
+
+tab start
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Gen
+erating test 3
+Cmd ----------------------------------------------------------------------------
+"UkB19 	wfq" "UkB19 	wfq"
+Output -------------------------------------------------------------------------
+UkB19 	wfq UkB19 	wfq
+tab start
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 4
+Cmd ----------------------------------------------------------------------------
+"lqKgfiHC 4" "lqKgfiHC 4"
+Output -------------------------------------------------------------------------
+lqKgfiHC 4 lqKgfiHC 4
+tab start
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 5
+Cmd -------------
+---------------------------------------------------------------
+"9dVrHZVwABy WdktOjh674RNnAlmPO5" "Ex Ga"
+Output -------------------------------------------------------------------------
+9dVrHZVwABy WdktOjh674RNnAlmPO5 Ex Ga
+tab start
+tab[0]: 9dVrHZVwABy
+tab[1]: WdktOjh674RNnAlmPO5
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 6
+Cmd ----------------------------------------------------------------------------
+"ipk6jYCcRiipPoC9MKPsEyBoZ4s	AuuD7B6	kn" "AmiW Nyg"
+Output -------------------------------------------------------------------------
+ipk6jYCcRiipPoC9MKPsEyBoZ4s	AuuD7B6	kn AmiW Nyg
+tab start
+tab[0]: pk6jYCcR
+tab[1]: pPoC9MKPsE
+tab[2]: BoZ4s
+tab[3]: uuD7B6	kn
+tab end
+
+--------------------------------------------------------------------------------
+Done
+=============================
+===================================================
+
+================================================================================
+Generating test 7
+Cmd ----------------------------------------------------------------------------
+"	OqQCX0cya4agR0Gq	R77YCMIKByH3ChIRKX1oLT" "bQo"
+Output -------------------------------------------------------------------------
+	OqQCX0cya4agR0Gq	R77YCMIKByH3ChIRKX1oLT bQo
+tab start
+tab[0]: 	Oq
+tab[1]: CX0cya4agR0Gq	R77YCMIKByH3ChIRKX1
+tab[2]: LT
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 8
+Cmd ----------------------------------------------------------------------------
+"0tEezRdWDD9mQSxhCKjaALVqUBAsKzP3Bxq" "C3NXBa"
+Output -------------------------------------------------------------------------
+0tEezRdWDD9mQSxhCKjaALVqUBAsKzP3Bxq C3NXBa
+tab start
+tab
+[0]: 0tEezRdWDD9mQSxh
+tab[1]: Kj
+tab[2]: ALVqU
+tab[3]: AsKzP
+tab[4]: xq
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 9
+Cmd ----------------------------------------------------------------------------
+"Fe1hzmBqCDEFETQ	364TJlAvN4ZwJ" "ng"
+Output -------------------------------------------------------------------------
+Fe1hzmBqCDEFETQ	364TJlAvN4ZwJ ng
+tab start
+tab[0]: Fe1hzmBqCDEFETQ	364TJlAvN4ZwJ
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 10
+Cmd ----------------------------------------------------------------------------
+"ThUW4BjFn56jA4WrKHNGtrV9	3eLNQ ZRgd2C
+FDm00I" "rM5af1u"
+Output -------------------------------------------------------------------------
+ThUW4BjFn56jA4WrKHNGtrV9	3eLNQ ZRgd2CFDm00I rM5af1u
+tab start
+tab[0]: ThUW4BjFn
+tab[1]: 6jA4W
+tab[2]: KHNGt
+tab[3]: V9	3eLNQ ZRgd2CFDm00I
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 11
+Cmd ----------------------------------------------------------------------------
+"  gh  " " gh"
+Output -------------------------------------------------------------------------
+  gh    gh
+tab start
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 12
+Cmd -------------------------------
+---------------------------------------------
+"  gh  " " "
+Output -------------------------------------------------------------------------
+  gh
+tab start
+tab[0]: gh
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+================================================================================
+Generating test 13
+Cmd ----------------------------------------------------------------------------
+"t3bLBVnMbda7QG2wC0K	H4fQurfJdte0" ""
+Output -------------------------------------------------------------------------
+t3bLBVnMbda7QG2wC0K	H4fQurfJdte0
+tab start
+tab[0]: t3bLBVnMbda7QG2wC0K	H4fQurfJdte0
+tab end
+
+--------------------------------------------------------------------------------
+Done
+================================================================================
+
+
+
+$> /usr/bin/norminette -R CheckForbiddenSourceHeader ft_split.c | grep -E '^(Error|Warning)'
+
+
+$> gcc -Wextra -Wall -Werror main.c ft_split.c -o user_exe
+
+
+
+_count_words
+_ft_isspace
+_ft_split
+_getnextsep
+_substring
+
+
+
+malloc
+
+
+= Test 1 ===================================================
+total 24
+-rwxr-xr-x  1 deepthought  deepthought  8792 Sep 16 11:43 mctseznkiwpyqldxbfoawsdb
+
+
+$> ./mctseznkiwpyqldxbfoawsdb "  	  	" " 	"
+
+tab start
+tab end
+
+
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+
+Diff OK :D
+= Test 2 ===================================================
+total 24
+-rwxr-xr-x  1 deepthought  deepthought  8792 Sep 16 11:43 r1ggbm23kgmm8afh994zyotg
+
+
+$> ./r1ggbm23kgmm8afh994zyotg "	 		" " 	"
+
+tab start
+tab end
+
+
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+
+Diff OK :D
+= Test 3 ===================================================
+total 24
+-rwxr-xr-x  1 deepthought  deepthought  8792 Sep 16 11:43 qf832mctysmkbre54f9o0lhc
+
+
+$> ./qf832mctysmkbre54f9o0lhc "UkB19 	wfq" "UkB19 	wfq"
+UkB19 	wfq UkB19 	wfq
+tab start
+tab end
+
+
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+
+Diff OK :D
+= Test 4 ===================================================
+total 24
+-rwxr-xr-x  1 deepthought  deepthought  8792 Sep 16 11:43 dedhogft6ks0l063gyod6zpn
+
+
+$> ./dedhogft6ks0l063gyod6zpn "lqKgfiHC 4" "lqKgfiHC 4"
+lqKgfiHC 4 lqKgfiHC 4
+tab start
+tab end
+
+
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+
+Diff OK :D
+= Test 5 ===================================================
+total 24
+-rwxr-xr-x  1 deepthought  deepthought  8792 Sep 16 11:43 qzvqlqp50md09fbyxub2kut1
+
+
+$> ./qzvqlqp50md09fbyxub2kut1 "9dVrHZVwABy WdktOjh674RNnAlmPO5" "Ex Ga"
+9dVrHZVwABy WdktOjh674RNnAlmPO5 Ex Ga
+tab start
+tab[0]: 9dVrHZVwABy
+tab[1]: WdktOjh674RNnAlm
+tab end
+
+
+$> diff -U 3 user_output_test5 test5.output | cat -e
+--- user_output_test5	2022-09-16 11:43:23.000000000 +0000$
++++ test5.output	2022-09-16 11:43:23.000000000 +0000$
+@@ -1,5 +1,5 @@$
+ 9dVrHZVwABy WdktOjh674RNnAlmPO5 Ex Ga$
+ tab start$
+ tab[0]: 9dVrHZVwABy$
+-tab[1]: WdktOjh674RNnAlm$
++tab[1]: WdktOjh674RNnAlmPO5$
+ tab end$
+
+
+--- user_output_test5	2022-09-16 11:43:23.000000000 +0000$
++++ test5.output	2022-09-16 11:43:23.000000000 +0000$
+@@ -1,5 +1,5 @@$
+ 9dVrHZVwABy WdktOjh674RNnAlmPO5 Ex Ga$
+ tab start$
+ tab[0]: 9dVrHZVwABy$
+-tab[1]: WdktOjh674RNnAlm$
++tab[1]: WdktOjh674RNnAlmPO5$
+ tab end$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 30 ==============================================================
+
+2017-2020 © Moulinette - 42 World
+Version 3.0
+General term of use of the site - Legal notices - Declaration on the use of cookies

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/15 19:52:57 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:49:53 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	**ft_split(char *str, char *charset)
 	if (array == NULL)
 		return (NULL);
 	i = 0;
-	while (*str != '\0')
+	while (nwords > 0)
 	{
 		sepidx = getnextsep(str, charset);
 		if (!ft_isspace(substring(str, 0, sepidx)))
@@ -111,20 +111,21 @@ char	**ft_split(char *str, char *charset)
 			array[i] = substring(str, 0, sepidx);
 			i ++;
 		}
-		str += 1 + sepidx;
+		str += + 1 + sepidx;
+		nwords--;
 	}
 	array[i] = NULL;
 	return (array);
 }
 
-/*int main()
+int main()
 {
-	char *sentence = "Hello this is a sentence with 8 words";
+	char *sentence = "9dVrHZVwABy WdktOjh674RNnAlmPO5";
 
 	char **splited_sentence;
 	int split_cnt = 0;
 
-	splited_sentence  = ft_split(sentence," ");
+	splited_sentence  = ft_split(sentence,"Ex Ga");
 
 	while (splited_sentence[split_cnt] != NULL)
 	{
@@ -150,11 +151,11 @@ char	**ft_split(char *str, char *charset)
 	}
 	free(splited_sentence);
 	printf("\n\n");
-	char *sentece2 = "there are, a lot of:separators * in this %sentence";
-		splited_sentence = ft_split(sentece2,",:*%");
+	char *sentece2 = "ipk6jYCcRiipPoC9MKPsEyBoZ4s	AuuD7B6	kn";
+		splited_sentence = ft_split(sentece2,"AmiW Nyg");
 	while(splited_sentence[split_cnt] != NULL)
 	{
-		printf("%s",splited_sentence[split_cnt]);
+		printf("%s\n",splited_sentence[split_cnt]);
 		split_cnt++;
 	}
 	while(split_cnt-1 >= 0)
@@ -164,8 +165,8 @@ char	**ft_split(char *str, char *charset)
 	}
 	free(splited_sentence);
 	printf("\n\n");
-	char *sentence3 = "Hello, , World, Salut";
-	splited_sentence = ft_split(sentence3,",Sl");
+	char *sentence3 =  "	OqQCX0cya4agR0Gq	R77YCMIKByH3ChIRKX1oLT";
+	splited_sentence = ft_split(sentence3,"bQo");
 	while(splited_sentence[split_cnt] != NULL)
 	{
 		printf("%s\n",splited_sentence[split_cnt]);
@@ -181,8 +182,8 @@ char	**ft_split(char *str, char *charset)
 	split_cnt = 0;
 	printf("\n\n");
 
-	char *sentence4 = "T5J0 	QQPvy4clLORZ	RDjQMoyhc9Xe0GIwJ9oAOo0Af8JXz" ;
-	splited_sentence = ft_split(sentence4,"5U6FX");
+	char *sentence4 = "0tEezRdWDD9mQSxhCKjaALVqUBAsKzP3Bxq";
+	splited_sentence = ft_split(sentence4,"C3NXBa");
 	while(splited_sentence[split_cnt] != NULL)
 	{
 		printf("%s %p\n",splited_sentence[split_cnt], splited_sentence[split_cnt]);
@@ -196,4 +197,4 @@ char	**ft_split(char *str, char *charset)
 	free(splited_sentence);
 	return 0;
 }
-*/
+

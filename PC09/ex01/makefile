@@ -2,21 +2,22 @@
 CC 				= gcc
 CFLAGS 			= -Wall -Werror -Wextra
 INCLUDES  		= -Iincludes/
-SRC 			= src/
+SRC 			= $(wildcard srcs/*.c)
 DEPENDENCIES 	= ft.h
-OBJ				= src/ft_putchar.o src/ft_putstr.o src/ft_strcmp.o src/ft_strlen.o src/ft_swap.o
-
-%.o : %.c $(DEPENDENCIES)
-	$(CC) -c $@ $< $(CFLAGS)
+OBJ				= $(SRC:.c=.o)
 
 
 all: libft.a
 
+%.o : %.c  $(CFLAGS) $(DEPENDENCIES) $(INCLUDES)
+	$(CC) -c $@ $<
+
+
 libft.a: $(OBJ)
-	ar rfc libft.a $^
+	ar r libft.a $^
 
 clean:
-	rm -f src/*.o
+	rm -f srcs/*.o
 
 fclean: clean
 	rm -f *.a

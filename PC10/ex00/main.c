@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:58:57 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/15 20:37:25 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/16 09:27:36 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "includes/utils.h"
 
 int	read_file(int argc, char **argv)
 {
@@ -37,14 +37,14 @@ int	read_file(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	char	buffer[30000];
+	char	buffer[BUFFER_SIZE];
 	int		fd;
 	int		cursor;
 
 	fd = read_file(argc, argv);
 	if (fd < 0)
 		return (fd);
-	read(fd, buffer, 30000);
+	read(fd, buffer, BUFFER_SIZE);
 	cursor = 0;
 	while (buffer[cursor] != '\0')
 	{
