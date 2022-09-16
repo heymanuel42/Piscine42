@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/16 14:49:53 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/16 22:06:52 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char	*substring(char *s, int start, int end)
 	char	*sub;
 	char	*begin;
 	int		i;
-
-	sub = malloc(sizeof(end - start +1) * sizeof (char));
+	sub = malloc((end - start +1) * sizeof (char));
 	begin = sub;
 	i = start;
 	while (i < end)
@@ -94,107 +93,64 @@ int	count_words(char *str, char *charset)
 char	**ft_split(char *str, char *charset)
 {
 	char	**array;
+	char	*sub;
 	int		nwords;
 	int		i;
 	int		sepidx;
-
 	nwords = count_words(str, charset);
-	array = malloc((nwords + 1) * sizeof(char *));
+	array = (char**)malloc((nwords+1) * sizeof(char *));
 	if (array == NULL)
 		return (NULL);
 	i = 0;
+
 	while (nwords > 0)
 	{
 		sepidx = getnextsep(str, charset);
-		if (!ft_isspace(substring(str, 0, sepidx)))
+		sub = substring(str, 0, sepidx);
+
+		if (!ft_isspace(sub))
 		{
-			array[i] = substring(str, 0, sepidx);
+			array[i] = sub;
 			i ++;
 		}
-		str += + 1 + sepidx;
+		str += 1 +  sepidx;
 		nwords--;
 	}
 	array[i] = NULL;
 	return (array);
 }
 
-int main()
+void test(char *sentence, char *charset)
 {
-	char *sentence = "9dVrHZVwABy WdktOjh674RNnAlmPO5";
-
 	char **splited_sentence;
 	int split_cnt = 0;
 
-	splited_sentence  = ft_split(sentence,"Ex Ga");
-
+	splited_sentence  = ft_split(sentence,charset);
 	while (splited_sentence[split_cnt] != NULL)
 	{
 		printf("%s\n",splited_sentence[split_cnt]);
+		if(splited_sentence[split_cnt] != NULL)
+			free(splited_sentence[split_cnt]);
+		splited_sentence[split_cnt] = NULL;
 		split_cnt++;
 	}
-	while (split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-	splited_sentence = ft_split(sentence,"i");
-	while (splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s\n",splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while (split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-	printf("\n\n");
+	if(splited_sentence != NULL)
+		free(*splited_sentence);
+	*splited_sentence = NULL;
+	printf("-------------------------------------------------------------\n\n");
+}
+int main()
+{
+	char *sentence = "9dVrHZVwABy WdktOjh674RNnAlmPO5";
 	char *sentece2 = "ipk6jYCcRiipPoC9MKPsEyBoZ4s	AuuD7B6	kn";
-		splited_sentence = ft_split(sentece2,"AmiW Nyg");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s\n",splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
-	printf("\n\n");
 	char *sentence3 =  "	OqQCX0cya4agR0Gq	R77YCMIKByH3ChIRKX1oLT";
-	splited_sentence = ft_split(sentence3,"bQo");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s\n",splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
+	char *sentence4 = "t3bLBVnMbda7QG2wC0K	H4fQurfJdte0";
 
-	split_cnt = 0;
-	printf("\n\n");
+	test(sentence,"Ex Ga");
+	test(sentece2,"AmiW Nyg");
+	test(sentence3,"bQo");
+	test(sentence4,"");
 
-	char *sentence4 = "0tEezRdWDD9mQSxhCKjaALVqUBAsKzP3Bxq";
-	splited_sentence = ft_split(sentence4,"C3NXBa");
-	while(splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s %p\n",splited_sentence[split_cnt], splited_sentence[split_cnt]);
-		split_cnt++;
-	}
-	while(split_cnt-1 >= 0)
-	{
-		free(splited_sentence[split_cnt]);
-		split_cnt--;
-	}
-	free(splited_sentence);
 	return 0;
 }
 
