@@ -6,17 +6,18 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:26:15 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/17 17:07:12 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/17 18:59:36 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/dictionnary.h"
 #include "../includes/ft/ft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-t_dict	*find(t_dict *dict, const char *key)
+t_dict_element	find(t_dict_element dict, const char *key)
 {
-	t_dict	*current;
+	t_dict_element	current;
 
 	if (dict == NULL)
 		return (NULL);
@@ -30,9 +31,9 @@ t_dict	*find(t_dict *dict, const char *key)
 	return (current);
 }
 
-char	*get_dict_value(t_dict *dict, const char *key)
+char	*get_dict_element_value(t_dict_element dict, const char *key)
 {
-	t_dict	*found;
+	t_dict_element	found;
 
 	found = find(dict, key)->next;
 	if (found == NULL)
@@ -41,9 +42,9 @@ char	*get_dict_value(t_dict *dict, const char *key)
 		return (get_value(found->pair));
 }
 
-t_dict	*create_entry(t_pair *pair, t_dict *parent, t_dict *next)
+t_dict	*create_entry(t_pair *pair, t_dict_element parent, t_dict_element next)
 {
-	t_dict	*entry;
+	t_dict_element	entry;
 
 	entry = malloc(sizeof(t_dict));
 	if (entry == NULL)
@@ -54,9 +55,9 @@ t_dict	*create_entry(t_pair *pair, t_dict *parent, t_dict *next)
 	return (entry);
 }
 
-t_dict	*add(t_dict **dict, t_pair *pair)
+t_dict_element	add(t_dict **dict, t_pair *pair)
 {
-	t_dict	*entry;
+	t_dict_element	entry;
 
 	if (*dict == NULL)
 	{
@@ -87,5 +88,10 @@ void	free_dict(t_dict *dict)
 		if (dict->parent != NULL)
 			free(dict->parent);
 		dict = dict->next;
+		if (dict->next == NULL)
+		{
+			free(dict);
+			return ;
+		}
 	}
 }

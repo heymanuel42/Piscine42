@@ -6,13 +6,14 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:29:28 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/17 16:50:28 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/17 18:56:49 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pair.h"
 #include "../includes/ft/ft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*get_key(t_pair *pair)
 {

@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:20:16 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/17 17:07:20 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/17 19:00:52 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ typedef struct s_dict{
 	struct s_dict	*parent;
 }t_dict;
 
-t_dict	*find(t_dict *dict, const char *s);
-t_dict	*add(t_dict **dict, t_pair *pair);
-void	free_dict(t_dict *dict);
-t_dict	*create_entry(t_pair *pair, t_dict *parent, t_dict *next);
-char	*get_dict_value(t_dict *dict, const char *key);
+typedef t_dict	*t_dict_element;
 
-t_dict	*g_dictionnary;
+t_dict	*find(t_dict_element dict, const char *s);
+t_dict	*add(t_dict **dict, t_pair *pair);
+t_dict	*create_entry(t_pair *pair, t_dict_element parent, t_dict_element next);
+void	free_dict(t_dict *dict);
+char	*get_dict_element_value(t_dict_element dict, const char *key);
+
 #endif
