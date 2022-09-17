@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/16 22:06:52 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/17 09:42:17 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*substring(char *s, int start, int end)
 	char	*sub;
 	char	*begin;
 	int		i;
+
 	sub = malloc((end - start +1) * sizeof (char));
 	begin = sub;
 	i = start;
@@ -97,30 +98,29 @@ char	**ft_split(char *str, char *charset)
 	int		nwords;
 	int		i;
 	int		sepidx;
+
 	nwords = count_words(str, charset);
-	array = (char**)malloc((nwords+1) * sizeof(char *));
+	array = (char **)malloc((nwords + 1) * sizeof(char *));
 	if (array == NULL)
 		return (NULL);
 	i = 0;
-
 	while (nwords > 0)
 	{
 		sepidx = getnextsep(str, charset);
 		sub = substring(str, 0, sepidx);
-
 		if (!ft_isspace(sub))
 		{
 			array[i] = sub;
 			i ++;
 		}
-		str += 1 +  sepidx;
+		str += 1 + sepidx;
 		nwords--;
 	}
 	array[i] = NULL;
 	return (array);
 }
 
-void test(char *sentence, char *charset)
+/*void test(char *sentence, char *charset)
 {
 	char **splited_sentence;
 	int split_cnt = 0;
@@ -152,5 +152,4 @@ int main()
 	test(sentence4,"");
 
 	return 0;
-}
-
+}*/
