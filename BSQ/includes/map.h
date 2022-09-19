@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/19 22:42:02 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/20 00:31:24 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef MAP_H
+# define MAP_H
+# include "cell.h"
 
-int	ft_sqrt(int nb)
-{
-	int		i;
-	int		res;
+typedef t_coordinate	t_size;
 
-	i = 1;
-	res = 0;
-	while (nb > 0)
-	{
-		nb -= i;
-		res++;
-		i += 2;
-	}
-	return (res);
-}
+typedef struct s_map{
+	t_size			*dimensions;
+	t_cell			***cell;
+	char			*data;
+}t_map;
+
+void	draw_map(t_map *map);
+t_map	*read_map(const char *file);
+void	create_map(t_map *map, t_coordinate at, t_cell *obstacle);
+int		free_map(t_map *map);
+#endif

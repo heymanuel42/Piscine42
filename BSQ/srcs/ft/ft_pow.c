@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/07 15:32:36 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/19 23:35:46 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	ft_sqrt(int nb)
+int	ft_pow(int nb, int power)
 {
-	int		i;
-	int		res;
-
-	i = 1;
-	res = 0;
-	while (nb > 0)
-	{
-		nb -= i;
-		res++;
-		i += 2;
-	}
-	return (res);
+	if (power < 0)
+		return (0);
+	else if (power == 0 || (nb == 0 && power == 0))
+		return (1);
+	else
+		return (nb * ft_pow(nb, power - 1));
 }

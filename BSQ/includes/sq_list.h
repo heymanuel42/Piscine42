@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   sq_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/19 23:10:34 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/19 23:17:40 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef SQ_LIST_H
+# define SQ_LIST_H
+# include "square.h"
 
-int	ft_sqrt(int nb)
-{
-	int		i;
-	int		res;
+typedef struct s_sq_list{
+	t_square	*node;
+	t_square	*next;
+}t_sq_list;
 
-	i = 1;
-	res = 0;
-	while (nb > 0)
-	{
-		nb -= i;
-		res++;
-		i += 2;
-	}
-	return (res);
-}
+t_square	*add(t_square *square);
+#endif

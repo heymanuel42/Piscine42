@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/05 15:26:08 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/07 16:23:25 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_sqrt(int nb)
+void	ft_putstr(char *str)
 {
-	int		i;
-	int		res;
+	int	i;
 
-	i = 1;
-	res = 0;
-	while (nb > 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		nb -= i;
-		res++;
-		i += 2;
+		write(1, &str[i], 1);
+		i++;
 	}
-	return (res);
 }

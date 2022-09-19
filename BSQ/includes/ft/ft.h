@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/19 22:52:40 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/20 00:11:39 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_H
+# define FT_H
 
-int	ft_sqrt(int nb)
-{
-	int		i;
-	int		res;
-
-	i = 1;
-	res = 0;
-	while (nb > 0)
-	{
-		nb -= i;
-		res++;
-		i += 2;
-	}
-	return (res);
-}
+int		ft_sqrt(int nb);
+int		ft_pow(int nb, int power);
+void	ft_putstr(char *str);
+void	ft_putnbr(int nb);
+char	**ft_split(char *str, char *charset);
+void	ft_putchar(char c);
+int		ft_strlen(char *str);
+int		ft_atoi(char *str);
+#endif

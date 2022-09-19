@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   square.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/19 22:38:15 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/19 23:33:03 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef SQUARE_H
+# define SQUARE_H
 
-int	ft_sqrt(int nb)
-{
-	int		i;
-	int		res;
+# include "coordinate.h"
 
-	i = 1;
-	res = 0;
-	while (nb > 0)
-	{
-		nb -= i;
-		res++;
-		i += 2;
-	}
-	return (res);
-}
+typedef struct s_square{
+	int				size;
+	t_coordinate	*corner;
+}t_square;
+
+int			is_in_square(t_coordinate coord, t_square square);
+t_square	*create_square(int size, int x, int y);
+int			free_square(t_square *square);
+void		print_square(t_square square);
+#endif

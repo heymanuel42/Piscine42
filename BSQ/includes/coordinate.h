@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   coordinate.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:58:45 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:08:44 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/19 22:37:10 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/20 01:24:34 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef COORDINATE_H
+# define COORDINATE_H
 
-int	ft_sqrt(int nb)
-{
-	int		i;
-	int		res;
+typedef struct s_coordinate{
+	int	x;
+	int	y;
+}t_coordinate;
 
-	i = 1;
-	res = 0;
-	while (nb > 0)
-	{
-		nb -= i;
-		res++;
-		i += 2;
-	}
-	return (res);
-}
+int				distance(t_coordinate c1, t_coordinate c2);
+void			print_coord(t_coordinate coord);
+t_coordinate	*create_coord(int x, int y);
+int				free_coord(t_coordinate *coord);
+#endif
