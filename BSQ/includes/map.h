@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 22:42:02 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 00:31:24 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/20 01:37:36 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ typedef t_coordinate	t_size;
 typedef struct s_map{
 	t_size			*dimensions;
 	t_cell			***cell;
-	char			*data;
+	char			empty;
+	char			obstacle;
+	char			fill;
 }t_map;
 
 void	draw_map(t_map *map);

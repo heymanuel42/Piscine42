@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 22:36:53 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 01:25:04 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/20 01:44:00 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 # include "coordinate.h"
 
+typedef enum e_type{
+	EMPTY = 0,
+	OBSTACLE = 1,
+	FILLED = 2
+}t_type;
+
 typedef struct s_cell{
+	t_type			type;
 	char			c;
 	t_coordinate	*coord;
 }t_cell;

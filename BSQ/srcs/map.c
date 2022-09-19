@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 23:41:03 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 01:33:10 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/20 01:46:11 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ t_map	*read_map(const char *file)
 	buff = ft_split(tmp, "\n");
 	while (buff[cursor] != NULL)
 		cursor++;
-	map->data = buff[0];
+	map->fill = buff[0][ft_strlen(buff[0]) - 1];
+	map->obstacle = buff[0][ft_strlen(buff[0]) - 2];
+	map->empty = buff[0][ft_strlen(buff[0]) - 3];
 	map->dimensions = create_coord(ft_atoi(buff[0]), ft_strlen(buff[1]));
 	map->cell = (t_cell ***)malloc(sizeof(t_cell **) * map->dimensions->x);
 	i = 0;
