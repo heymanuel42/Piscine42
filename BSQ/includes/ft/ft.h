@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 22:52:40 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 00:11:39 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:17:36 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ char	**ft_split(char *str, char *charset);
 void	ft_putchar(char c);
 int		ft_strlen(char *str);
 int		ft_atoi(char *str);
+int		ft_str_is_numeric(char *str);
+
 #endif

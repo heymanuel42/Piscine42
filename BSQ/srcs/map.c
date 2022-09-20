@@ -6,117 +6,128 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 23:41:03 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 01:46:11 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/20 22:03:25 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/map.h"
+#include "../includes/utils.h"
+
 #include "../includes/ft/ft.h"
-#include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
+
+char	*header_is_valid(char *header, int *length)
+{
+	*length = ft_atoi(header);
+	if (*header == '+' || *header == '-' || *length <= 0)
+		return (NULL);
+	while (*header >= '0' && *header <= '9')
+		header++;
+	if (ft_strlen(header) != 3)
+		return (NULL);
+	if (header[0] == header[1]
+		|| header[1] == header[2]
+		|| header[0] == header[2])
+		return (NULL);
+	return (header);
+}
+
+int	map_data_is_valid(char **data, char *subset)
+{
+	int	n_lines;
+	int	actual_lines;
+	int	prev_line_len;
+
+	actual_lines = 1;
+	n_lines = ft_atoi(data[0]);
+	prev_line_len = ft_strlen(data[actual_lines]);
+	while (data[actual_lines] != NULL)
+	{
+		if (!contains(data[actual_lines], subset))
+			return (0);
+		if (data[actual_lines] != NULL
+			&& prev_line_len != ft_strlen(data[actual_lines]))
+			return (0);
+		else
+			prev_line_len = ft_strlen(data[actual_lines]);
+		actual_lines++;
+	}
+	if (n_lines != actual_lines - 1)
+		return (0);
+	actual_lines = 0;
+	return (1);
+}
+
+t_map	*parse(char **data, char *to_draw, int width, int length)
+{
+	t_map	*map;
+	int		x;
+	int		y;
+
+	x = 0;
+	y = 0;
+	map = malloc(sizeof(t_map));
+	map->fill = to_draw[2];
+	map->obstacle = to_draw[1];
+	map->empty = to_draw[0];
+	map->dimensions = create_coord(width, length);
+	map->cell = (t_cell ***)malloc(sizeof(t_cell **) * map->dimensions->y);
+	while (y < map->dimensions->y)
+	{
+		map->cell[y] = malloc(sizeof(t_cell *) * map->dimensions->x);
+		x = 0;
+		while (x < map->dimensions->x)
+		{
+			map->cell[y][x] = create_cell(data[y + 1][x], y, x);
+			x++;
+		}
+		y++;
+	}
+	return (map);
+}
 
 t_map	*read_map(const char *file)
 {
-	int		fd;
-	char	tmp[10000];
-	char	**buff;
-	int		cursor;
+	char	**lines;
+	char	*to_draw;
+	int		n_lines;
 	t_map	*map;
-	int		i;
-	int		j;
-	map = malloc(sizeof(t_map));
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
-	read(fd, tmp, 10000);
-	buff = ft_split(tmp, "\n");
-	while (buff[cursor] != NULL)
-		cursor++;
-	map->fill = buff[0][ft_strlen(buff[0]) - 1];
-	map->obstacle = buff[0][ft_strlen(buff[0]) - 2];
-	map->empty = buff[0][ft_strlen(buff[0]) - 3];
-	map->dimensions = create_coord(ft_atoi(buff[0]), ft_strlen(buff[1]));
-	map->cell = (t_cell ***)malloc(sizeof(t_cell **) * map->dimensions->x);
-	i = 0;
-	while (i < map->dimensions->x)
-	{
-		map->cell[i] = malloc(sizeof(t_cell *) * map->dimensions->y);
-		j = 0;
-		while (j < map->dimensions->y)
-		{
-			map->cell[i][j] = malloc(sizeof(t_cell));
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (i < map->dimensions->x)
-	{
-		j = 0;
-		while (j < map->dimensions->y)
-		{
-			map->cell[i][j] = create_cell(buff[i + 1][j], i, j);
-			j++;
-		}
-		i++;
-	}
-	while (cursor > 0)
-	{
-		if (buff[cursor] != NULL)
-			free(buff[cursor]);
-		cursor--;
-	}
+
+	map = NULL;
+	lines = read_file(file);
+	to_draw = header_is_valid(lines[0], &n_lines);
+	if (to_draw != NULL && map_data_is_valid(lines, to_draw))
+		map = parse(lines, to_draw, ft_strlen(lines[1]), n_lines);
+	free_lines(lines);
 	return (map);
 }
 
 int	free_map(t_map *map)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	j = 0;
+	x = 0;
+	y = 0;
 	if (map == NULL)
 		return (0);
-	while (i < map->dimensions->x)
+	while (y < map->dimensions->y)
 	{
-		j = 0;
-		while (j < map->dimensions->y)
+		x = 0;
+		while (x < map->dimensions->x)
 		{
-			if (map->cell[i][j] != NULL)
+			if (map->cell[y][x] != NULL)
 			{
-				free_cell(map->cell[i][j]);
+				free_cell(map->cell[y][x]);
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
+	free(map->dimensions);
+	free(map->cell);
 	free(map);
 	map = NULL;
 	return (1);
-}
-
-void	draw_map(t_map *map)
-{
-	int	i;
-	int	j;
-
-	if (map == NULL)
-		return ;
-	i = 0;
-	j = 0;
-	while (i < map->dimensions->x)
-	{
-		j = 0;
-		while (j < map->dimensions->y)
-		{
-			draw_cell(*(map->cell[i][j]));
-			j++;
-		}
-		i++;
-		ft_putstr("\n");
-	}
 }

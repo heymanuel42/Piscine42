@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sq_list.h                                          :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 23:10:34 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:17:40 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/20 21:58:28 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/20 21:59:14 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SQ_LIST_H
-# define SQ_LIST_H
-# include "square.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-typedef struct s_sq_list{
-	t_square	*node;
-	t_square	*next;
-}t_sq_list;
+char	*append(char *str, char a);
+int		contains(char *str, char *c);
+char	**read_file(const char *file);
+void	free_lines(char **lines);
 
-t_square	*add(t_square *square);
 #endif

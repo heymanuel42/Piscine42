@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.h                                            :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 22:44:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 22:44:35 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/03 22:14:38 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/04 15:21:22 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLVE_H
-# define SOLVE_H
-
-#endif
+int	ft_str_is_numeric(char *str)
+{
+	while (*str >= '0' && *str <= '9')
+	{
+		str++;
+	}
+	if (*str == '\0')
+		return (1);
+	else
+		return (0);
+}
