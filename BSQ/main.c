@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 23:33:36 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 22:03:55 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:46:57 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/map.h"
+#include "includes/bsq/map.h"
 #include "includes/ft/ft.h"
-#include <stdlib.h>
+#include "includes/bsq/algo.h"
+#include "includes/bsq/utils.h"
+#include <stdio.h>
 
 void	draw_map(t_map *map)
 {
@@ -36,26 +38,92 @@ void	draw_map(t_map *map)
 	}
 }
 
-int	main(int argc, char**argv)
+void	fill_square(t_map *map, t_square *square)
 {
-	t_map	*map;
+	int	x;
+	int	y;
 
-	(void)argc;
-	map = read_map(argv[1]);
-	if (map != NULL)
+	x = square->coord->x;
+	y = square->coord->y;
+	while (y < square->coord->y + square->size)
 	{
+		x = square->coord->x;
+		while (x < square->coord->x + square->size)
+		{
+			map->cell[y - 1][x - 1]->c = map->fill;
+			x++;
+		}
+		y++;
+	}
+}
+
+int	solve(char *file, int std)
+{
+	t_map		*map;
+	t_square	*sq;
+
+	map = NULL;
+	sq = malloc_square(0, 0, 0);
+	if (std == 0)
+		map = read_map(file, 0);
+	else
+		map = read_map(file, 1);
+	if (map == NULL)
+	{
+		free_square(sq);
+		return (0);
+	}
+	else
+	{
+		calc_biggest_square(map, &sq);
+		fill_square(map, sq);
 		draw_map(map);
-		ft_putstr("\n");
-		ft_putstr("empty : ");
-		ft_putchar(map->empty);
-		ft_putstr("\n");
-		ft_putstr("filled : ");
-		ft_putchar(map->fill);
-		ft_putstr("\n");
-		ft_putstr("obstacle : ");
-		ft_putchar(map->obstacle);
-		ft_putstr("\n");
 		free_map(map);
+		free_square(sq);
+		return (1);
+	}
+}
+
+void	solve_from_stdin(void)
+{
+	int		i;
+	char	*buff;
+	char	c;
+
+	i = 1;
+	c = ' ';
+	buff = NULL;
+	while (i > 0)
+	{
+		i = read(STDIN_FILENO, &c, 1);
+		buff = append(buff, c);
+	}
+	buff[i - 1] = '\0';
+	ft_putstr("\n");
+	if (!solve(buff, 1))
+		ft_putstr("map error\n");
+	free(buff);
+}
+
+int	main(int argc, char **argv)
+{
+	int		i;
+
+	i = 1;
+	if (argc == 1)
+	{
+		solve_from_stdin();
+	}
+	else
+	{
+		while (i < argc)
+		{
+			if (!solve(argv[i], 0))
+				ft_putstr("map error\n");
+			if (i + 1 < argc)
+				ft_putstr("\n");
+			i++;
+		}
 	}
 	return (0);
 }

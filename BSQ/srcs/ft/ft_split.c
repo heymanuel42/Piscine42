@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:44 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/17 09:42:17 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:29:49 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@
 char	*substring(char *s, int start, int end)
 {
 	char	*sub;
-	char	*begin;
 	int		i;
 
 	sub = malloc((end - start +1) * sizeof (char));
-	begin = sub;
-	i = start;
+	i = 0;
 	while (i < end)
 	{
-		*sub = s[i];
+		sub[i] = s[i];
 		i++;
-		sub++;
 	}
-	*sub = '\0';
-	return (begin);
+	sub[i] = '\0';
+	return (sub);
 }
 
 int	getnextsep(char *str, char *charset)
@@ -60,6 +57,7 @@ int	ft_isspace(char *str)
 		|| *str == '\v'
 		|| *str == '\f'
 		|| *str == '\r'
+		|| *str == 127
 		|| *str == ' ')
 		str++;
 	if (*str == '\0')
@@ -99,6 +97,7 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		sepidx;
 
+	sub = NULL;
 	nwords = count_words(str, charset);
 	array = (char **)malloc((nwords + 1) * sizeof(char *));
 	if (array == NULL)
@@ -108,48 +107,10 @@ char	**ft_split(char *str, char *charset)
 	{
 		sepidx = getnextsep(str, charset);
 		sub = substring(str, 0, sepidx);
-		if (!ft_isspace(sub))
-		{
-			array[i] = sub;
-			i ++;
-		}
+		array[i++] = sub;
 		str += 1 + sepidx;
 		nwords--;
 	}
 	array[i] = NULL;
 	return (array);
 }
-
-/*void test(char *sentence, char *charset)
-{
-	char **splited_sentence;
-	int split_cnt = 0;
-
-	splited_sentence  = ft_split(sentence,charset);
-	while (splited_sentence[split_cnt] != NULL)
-	{
-		printf("%s\n",splited_sentence[split_cnt]);
-		if(splited_sentence[split_cnt] != NULL)
-			free(splited_sentence[split_cnt]);
-		splited_sentence[split_cnt] = NULL;
-		split_cnt++;
-	}
-	if(splited_sentence != NULL)
-		free(*splited_sentence);
-	*splited_sentence = NULL;
-	printf("-------------------------------------------------------------\n\n");
-}
-int main()
-{
-	char *sentence = "9dVrHZVwABy WdktOjh674RNnAlmPO5";
-	char *sentece2 = "ipk6jYCcRiipPoC9MKPsEyBoZ4s	AuuD7B6	kn";
-	char *sentence3 =  "	OqQCX0cya4agR0Gq	R77YCMIKByH3ChIRKX1oLT";
-	char *sentence4 = "t3bLBVnMbda7QG2wC0K	H4fQurfJdte0";
-
-	test(sentence,"Ex Ga");
-	test(sentece2,"AmiW Nyg");
-	test(sentence3,"bQo");
-	test(sentence4,"");
-
-	return 0;
-}*/

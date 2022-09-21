@@ -3,80 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 15:31:02 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 00:26:55 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/21 17:02:16 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/09/21 19:47:08 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft/ft.h"
-
-int	ft_check_char(char c)
-{
-	if (c == ' ')
-		return (0);
-	if (c == '-')
-		return (1);
-	if (c == '+')
-		return (2);
-	if (c >= '0' && c <= '9')
-		return (3);
-	return (-1);
-}
-
-char	*ft_remove_whitespace(char *str)
-{
-	while (*str == '\t'
-		|| *str == '\n'
-		|| *str == '\v'
-		|| *str == '\f'
-		|| *str == '\r'
-		|| *str == ' ')
-			str++;
-	return (str);
-}
-
-char	*ft_get_sign(char *str, int *sign)
-{
-	int	minus;
-	int	plus;
-
-	minus = 0;
-	plus = 0;
-	while (ft_check_char(*str) == 1 || ft_check_char(*str) == 2)
-	{
-		if (ft_check_char(*str) == 1)
-			minus++;
-		else if (ft_check_char(*str) == 2)
-			plus++;
-		str++;
-	}
-	if (minus % 2 == 0)
-		*sign = 1;
-	else
-		*sign = -1;
-	return (str);
-}
+#include <stdio.h>
 
 int	ft_atoi(char *str)
 {
-	int	sign;
-	int	idx;
-	int	res;
 	int	i;
+	int	sign;
+	int	nb;
 
 	i = 0;
-	res = 0;
-	idx = 0;
-	str = ft_remove_whitespace(str);
-	str = ft_get_sign(str, &sign);
-	while (str[idx] && ft_check_char(str[idx]) == 3)
-		idx++;
-	while (i < idx && ft_check_char(str[i] == 3))
+	sign = 1;
+	nb = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
 	{
-		res += (str[i] - '0') * ft_pow(10, idx - i - 1);
+		sign *= -1;
 		i++;
 	}
-	return (sign * res);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	{
+		nb *= 10;
+		nb += str[i] - '0';
+		i++;
+	}
+	return (nb * sign);
 }

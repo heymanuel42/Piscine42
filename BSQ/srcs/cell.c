@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cell.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 00:01:02 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/20 01:43:31 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/09/21 10:54:43 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cell.h"
+#include "../includes/bsq/cell.h"
 #include "../includes/ft/ft.h"
 #include <stdlib.h>
 
@@ -43,8 +43,8 @@ int	free_cell(t_cell *cell)
 		return (0);
 	if (cell->coord != NULL)
 	{
-		if (free_coord(cell->coord))
-			free(cell);
+		free_coord(cell->coord);
+		free(cell);
 	}
 	cell = NULL;
 	return (1);

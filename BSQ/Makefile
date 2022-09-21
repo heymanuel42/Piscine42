@@ -1,7 +1,7 @@
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
 SRC 			= $(wildcard srcs/*.c) $(wildcard *.c) $(wildcard srcs/ft/*.c)
-INCLUDES 	= -Iincludes
+DEPENDENCIES 	= $(wildcard includes/*.h) $(wildcard includes/ft/*.h) $(wildcard includes/bsq/*.h)
 OBJECTS			= $(SRC:.c=.o)
 PROGRAM				= bsq
 

@@ -3,51 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: apalumbi <apalumbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 23:18:13 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/09/19 23:35:25 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/09/19 17:23:12 by apalumbi          #+#    #+#             */
+/*   Updated: 2022/09/20 19:35:21 by apalumbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/square.h"
-#include "../includes/ft/ft.h"
-#include <stdlib.h>
+#include "../includes/bsq/square.h"
 
-t_square	*create_square(int size, int x, int y)
+t_square	*malloc_square(int size, int x, int y)
 {
 	t_square	*square;
 
-	square = malloc(sizeof(square));
+	square = malloc(sizeof(t_square));
 	if (square == NULL)
 		return (NULL);
 	square->size = size;
-	square->corner = create_coord(x, y);
-	if (square->corner == NULL)
+	square->coord = create_coord(x, y);
+	if (square->coord == NULL)
 	{
-		free(square);
-		square = NULL;
+		free_square(square);
 		return (NULL);
 	}
 	return (square);
 }
 
-int	free_square(t_square *square)
+/* t_square	**malloc_square(int size, int x, int y)
 {
+	t_square	**square;
+
+	*square = malloc(sizeof(t_square *));
 	if (square == NULL)
-		return (0);
-	if (square->corner != NULL)
-		free_coord(square->corner);
-	free(square);
-	square = NULL;
-	return (1);
+		return (NULL);
+	square->size = size;
+	square->coord = create_coord(x, y);
+	if (square->coord == NULL)
+	{
+		free_square(square);
+		return (NULL);
+	}
+	return (square);
+} */
+
+void	free_square(t_square *square)
+{
+	if (square != NULL)
+	{
+		free_coord(square->coord);
+		free(square);
+	}
 }
 
-void	print_square(t_square square)
+/* t_square	*ud_s(int size, int x, int y)
 {
-	ft_putstr("(");
-	ft_putnbr(square.size);
-	ft_putstr(",");
-	print_coord(*(square.corner));
-	ft_putstr(")");
-}
+	t_square	*square;
+
+	square = malloc_square(size, x, y);
+	if (square == NULL)
+		return (NULL);
+	return (square);
+} */
